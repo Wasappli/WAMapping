@@ -199,7 +199,7 @@ You'll find inspiration from [Restkit](https://github.com/RestKit/RestKit) and [
 
 #Contributing : Problems, Suggestions, Pull Requests?
 
-Please open a new Issue [here](https://github.com/Wasappli/WAAppRouting/issues) if you run into a problem specific to WAAppRouting.
+Please open a new Issue [here](https://github.com/Wasappli/WAMapping/issues) if you run into a problem specific to WAAppRouting.
 
 For new features pull requests are encouraged and greatly appreciated! Please try to maintain consistency with the existing code style. If you're considering taking on significant changes or additions to the project, please ask me before by opening a new Issue to have a chance for a merge.
 
