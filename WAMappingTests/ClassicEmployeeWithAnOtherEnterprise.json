@@ -1,0 +1,12 @@
+{
+    "id": 1,
+    "first_name": "Marian",
+    "enterprise": {
+        "id": 2,
+        "name": "iPuP",
+        "creation_date": "2009-07-01",
+        "address": {
+            "street_number": 13
+        }
+    }
+}

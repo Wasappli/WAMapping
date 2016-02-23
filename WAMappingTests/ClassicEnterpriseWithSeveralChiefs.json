@@ -1,0 +1,23 @@
+{
+    "enterprise": {
+        "id": 1,
+        "name": "Wasappli",
+        "creation_date": "2013-10-01",
+        "address": {
+            "street_number": 5149
+        },
+        "chiefs": [1, 2, 3]
+    },
+    "employees": [{
+                  "id": 1,
+                  "first_name": "Marian"
+                  },
+                  {
+                  "id": 2,
+                  "first_name": "Jérémy"
+                  },
+                  {
+                  "id": 3,
+                  "first_name": "Arnaud"
+                  }]
+}
