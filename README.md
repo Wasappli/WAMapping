@@ -16,7 +16,8 @@ A fast mapper from JSON to `NSObject`
 - [x] Supports both JSON <-> `NSObject`
 - [x] Designed for customisation
 - [x] Built-in CoreData and Memory stores
-- [x] Built-in insert or update object 
+- [x] Built-in insert or update object
+- [x] Tested
 
 Go visit the [wiki](https://github.com/wasappli/WAMapping/wiki) for more details about `WAMapping` advanced use.
 
