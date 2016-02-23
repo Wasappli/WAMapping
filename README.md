@@ -20,6 +20,8 @@ A fast mapper from JSON to `NSObject`
 
 Go visit the [wiki](https://github.com/wasappli/WAMapping/wiki) for more details about `WAMapping` advanced use.
 
+WAMapping is a library for iOS to turns dictionaries into objects and objects to dictionary. It's aim is to simplify the boilerplate of manually parsing the data and assigning values to an object. It's even more difficult when it comes to using it with CoreData because of the insert or update. And I do not mention performances involved. WAMapping solves this for you!
+
 ## Install and use
 ### Cocoapods
 Use Cocoapods, this is the easiest way to install the mapper.
