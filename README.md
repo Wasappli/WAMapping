@@ -45,6 +45,7 @@ Let's assume the `Enterprise` class as follows:
 @property (nonatomic, strong) NSDate *creationDate;
 @property (nonatomic, strong) NSNumber *streetNumber;
 @property (nonatomic, strong) NSArray *employees; // Can be mutable, or an `NSSet` or an `NSOrderedSet`
+@property (nonatomic, strong) NSArray *chiefs;
 
 @end
 ```
@@ -98,7 +99,7 @@ And that's it...!
 ### Use the mapper
 
 First, create a store. This is a required step.
-I'm providing two stores on this repo: `WAMemoryStore` which relies on a simple `NSMutableSet` and `WACoreDataStore` which makes use of `CoreData`
+I'm providing two stores on this repo: `WAMemoryStore` which relies on a simple `NSMutableSet` and `WACoreDataStore` which makes use of `CoreData`.
 You can easily create your own store if you want to use `NSCoding` for example, go checkout the wiki.
 
 ```objc
