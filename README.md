@@ -99,7 +99,7 @@ I'm providing two stores on this repo: `WAMemoryStore` which relies on a simple 
 You can easily create your own store if you want to use `NSCoding` for example, go checkout the wiki.
 
 ```objc
-WAMemoryStore *store = [[]WAMemoryStore alloc] init];
+WAMemoryStore *store = [[WAMemoryStore alloc] init];
 
 // or
 // WACoreDataStore *store = [[WACoreDataStore alloc] initWithManagedObjectContext:localContext];
@@ -145,7 +145,8 @@ And voilà!
 ```
 
 ```objc
-WARelationshipMapping *enterpriseRelationship = [WARelationshipMapping relationshipMappingFromSourceProperty:@"enterprise" toDestinationProperty:@"enterprise" withMapping:enterpriseMapping];
+WARelationshipMapping *enterpriseRelationship = 
+[WARelationshipMapping relationshipMappingFromSourceProperty:@"enterprise" toDestinationProperty:@"enterprise" withMapping:enterpriseMapping];
 [employeeMapping addRelationshipMapping:enterpriseRelationship];
 ```
 
