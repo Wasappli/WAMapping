@@ -1,0 +1,15 @@
+{
+    "enterprise": {
+        "id": 1,
+        "name": "Wasappli",
+        "creation_date": "2013-10-01",
+        "address": {
+            "street_number": 5149
+        },
+        "chiefs": 1
+    },
+    "employees": [{
+                  "id": 1,
+                  "first_name": "Marian"
+                  }]
+}

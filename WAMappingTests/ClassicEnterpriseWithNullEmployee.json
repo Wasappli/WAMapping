@@ -1,0 +1,9 @@
+{
+    "id": 1,
+    "name": "Wasappli",
+    "creation_date": "2013-10-01",
+    "address": {
+        "street_number": 5149
+    },
+    "employees": null
+}

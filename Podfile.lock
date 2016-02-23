@@ -1,0 +1,15 @@
+PODS:
+  - Kiwi (2.4.0)
+  - MagicalRecord (2.3.2):
+    - MagicalRecord/Core (= 2.3.2)
+  - MagicalRecord/Core (2.3.2)
+
+DEPENDENCIES:
+  - Kiwi
+  - MagicalRecord
+
+SPEC CHECKSUMS:
+  Kiwi: f49c9d54b28917df5928fe44968a39ed198cb8a8
+  MagicalRecord: 53bed74b4323b930992a725be713e53b37d19755
+
+COCOAPODS: 0.39.0
