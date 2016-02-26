@@ -44,4 +44,6 @@ typedef void (^WAMapperCompletionBlock)(NSArray *mappedObjects);
  */
 - (void)mapFromRepresentation:(id)json mapping:(WAEntityMapping *)mapping completion:(WAMapperCompletionBlock)completion;
 
+@property (nonatomic, strong, readonly) id <WAStoreProtocol> store;
+
 @end
