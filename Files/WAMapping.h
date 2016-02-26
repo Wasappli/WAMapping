@@ -12,6 +12,7 @@
 #import "WAStoreProtocol.h"
 #import "WACoreDataStore.h"
 #import "WAMemoryStore.h"
+#import "WANSCodingStore.h"
 
 #import "WAEntityMapping.h"
 #import "WAPropertyMapping.h"
