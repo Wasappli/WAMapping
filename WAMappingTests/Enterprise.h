@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface Enterprise : NSObject
+@interface Enterprise : NSObject <NSCoding>
 
 @property (nonatomic, strong) NSNumber *itemID;
 @property (nonatomic, strong) NSString *name;

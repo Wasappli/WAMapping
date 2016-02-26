@@ -15,7 +15,7 @@ A fast mapper from JSON to `NSObject`
 - [x] Saves you many hours
 - [x] Supports both JSON <-> `NSObject`
 - [x] Designed for customisation
-- [x] Built-in CoreData and Memory stores
+- [x] Built-in CoreData, NSCoding and Memory stores
 - [x] Built-in insert or update object
 - [x] Tested
 
@@ -99,14 +99,22 @@ And that's it...!
 ### Use the mapper
 
 First, create a store. This is a required step.
-I'm providing two stores on this repo: `WAMemoryStore` which relies on a simple `NSMutableSet` and `WACoreDataStore` which makes use of `CoreData`.
-You can easily create your own store if you want to use `NSCoding` for example, go checkout the wiki.
+I'm providing three stores on this repo:
+
+- `WAMemoryStore` which relies on a simple `NSMutableSet`,
+- `WANSCodingStore` which saves your objects using `NSCoding` protocol,
+- `WACoreDataStore` which makes use of `CoreData`.
+
+You can easily create your own store is you want to use SQLite for example, go checkout the wiki.
 
 ```objc
 WAMemoryStore *store = [[WAMemoryStore alloc] init];
 
 // or
 // WACoreDataStore *store = [[WACoreDataStore alloc] initWithManagedObjectContext:localContext];
+
+// or
+// WANSCodingStore *store = [[WANSCodingStore alloc] initWithArchivePath:archivePath];
 ```
 
 Then, allocate a mapper with the store

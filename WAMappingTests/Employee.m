@@ -7,31 +7,32 @@
 //
 
 #import "Employee.h"
+#import <AutoCoding/AutoCoding.h>
 
 @implementation Employee
 
-- (BOOL)isEqual:(id)object {
-    if (![object isKindOfClass:[Employee class]]) {
-        return NO;
-    }
-    
-    return [self isEqualToEmployee:object];
-}
-
-- (BOOL)isEqualToEmployee:(Employee *)employee {
-    if (self == employee) {
-        return YES;
-    }
-    
-    if ([self.itemID isEqual:employee.itemID]) {
-        return YES;
-    }
-    
-    return NO;
-}
-
-- (NSUInteger)hash {
-    return [self.itemID hash];
-}
+//- (BOOL)isEqual:(id)object {
+//    if (![object isKindOfClass:[Employee class]]) {
+//        return NO;
+//    }
+//    
+//    return [self isEqualToEmployee:object];
+//}
+//
+//- (BOOL)isEqualToEmployee:(Employee *)employee {
+//    if (self == employee) {
+//        return YES;
+//    }
+//    
+//    if ([self.itemID isEqual:employee.itemID]) {
+//        return YES;
+//    }
+//    
+//    return NO;
+//}
+//
+//- (NSUInteger)hash {
+//    return [self.itemID hash];
+//}
 
 @end

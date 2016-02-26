@@ -7,6 +7,7 @@
 //
 
 #import "Enterprise.h"
+#import <AutoCoding/AutoCoding.h>
 
 @implementation Enterprise
 

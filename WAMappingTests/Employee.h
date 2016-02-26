@@ -10,7 +10,7 @@
 
 @class Enterprise;
 
-@interface Employee : NSObject
+@interface Employee : NSObject <NSCoding>
 
 @property (nonatomic, strong) NSNumber *itemID;
 @property (nonatomic, strong) NSString *firstName;

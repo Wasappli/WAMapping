@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		912A881C4C7A80B570A99EC4 /* libPods-WAMappingTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 868B326C1D1BA06F5CF195FD /* libPods-WAMappingTests.a */; };
+		E006888C1C809CF4005DF30F /* WANSCodingStore.m in Sources */ = {isa = PBXBuildFile; fileRef = E006888B1C809CF4005DF30F /* WANSCodingStore.m */; };
 		E01C1C721C7C9F1800FFEF06 /* NSArray+WAMergeableCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = E01C1C4A1C7C9F1800FFEF06 /* NSArray+WAMergeableCollection.m */; };
 		E01C1C731C7C9F1800FFEF06 /* NSMutableArray+WAMergeableCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = E01C1C4C1C7C9F1800FFEF06 /* NSMutableArray+WAMergeableCollection.m */; };
 		E01C1C741C7C9F1800FFEF06 /* NSMutableDictionary+WASubDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = E01C1C4E1C7C9F1800FFEF06 /* NSMutableDictionary+WASubDictionary.m */; };
@@ -60,6 +61,7 @@
 		E0AF002E1C61921A00FDB4B9 /* ClassicEnterpriseWithOneEmployee.json in Resources */ = {isa = PBXBuildFile; fileRef = E0AF002D1C61921A00FDB4B9 /* ClassicEnterpriseWithOneEmployee.json */; };
 		E0AF00311C61927500FDB4B9 /* Employee.m in Sources */ = {isa = PBXBuildFile; fileRef = E0AF00301C61927500FDB4B9 /* Employee.m */; };
 		E0BD859F1C6A93D5001D1DF6 /* ClassicEmployeeWithAnEnterprise.json in Resources */ = {isa = PBXBuildFile; fileRef = E0BD859E1C6A93D5001D1DF6 /* ClassicEmployeeWithAnEnterprise.json */; };
+		E0DAAB501C80BA0100703BB4 /* WANSCodingStoreTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E0DAAB4F1C80BA0100703BB4 /* WANSCodingStoreTests.m */; };
 		E0EED84E1C7B62C900DE9B8A /* ClassicEnterpriseWithSeveralEmployeesNonNumericalIDS.json in Resources */ = {isa = PBXBuildFile; fileRef = E0EED84D1C7B62C900DE9B8A /* ClassicEnterpriseWithSeveralEmployeesNonNumericalIDS.json */; };
 		E0EED8501C7B635800DE9B8A /* ClassicEnterpriseWithOneEmployeeNonNumericalIDS.json in Resources */ = {isa = PBXBuildFile; fileRef = E0EED84F1C7B635800DE9B8A /* ClassicEnterpriseWithOneEmployeeNonNumericalIDS.json */; };
 		E0EED8551C7B724000DE9B8A /* WAReverseMapperMemoryTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E0EED8541C7B724000DE9B8A /* WAReverseMapperMemoryTests.m */; };
@@ -79,6 +81,8 @@
 		1500FE9B2EDBF40355C0DBFF /* Pods-WAMappingTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WAMappingTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-WAMappingTests/Pods-WAMappingTests.release.xcconfig"; sourceTree = "<group>"; };
 		6F6D6D7CF08AE087547BDF25 /* Pods-WAMappingTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WAMappingTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WAMappingTests/Pods-WAMappingTests.debug.xcconfig"; sourceTree = "<group>"; };
 		868B326C1D1BA06F5CF195FD /* libPods-WAMappingTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-WAMappingTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		E006888A1C809CF4005DF30F /* WANSCodingStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WANSCodingStore.h; sourceTree = "<group>"; };
+		E006888B1C809CF4005DF30F /* WANSCodingStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WANSCodingStore.m; sourceTree = "<group>"; };
 		E01C1C491C7C9F1800FFEF06 /* NSArray+WAMergeableCollection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+WAMergeableCollection.h"; sourceTree = "<group>"; };
 		E01C1C4A1C7C9F1800FFEF06 /* NSArray+WAMergeableCollection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+WAMergeableCollection.m"; sourceTree = "<group>"; };
 		E01C1C4B1C7C9F1800FFEF06 /* NSMutableArray+WAMergeableCollection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableArray+WAMergeableCollection.h"; sourceTree = "<group>"; };
@@ -166,6 +170,7 @@
 		E0AF002F1C61927500FDB4B9 /* Employee.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Employee.h; sourceTree = "<group>"; };
 		E0AF00301C61927500FDB4B9 /* Employee.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Employee.m; sourceTree = "<group>"; };
 		E0BD859E1C6A93D5001D1DF6 /* ClassicEmployeeWithAnEnterprise.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = ClassicEmployeeWithAnEnterprise.json; sourceTree = "<group>"; };
+		E0DAAB4F1C80BA0100703BB4 /* WANSCodingStoreTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WANSCodingStoreTests.m; sourceTree = "<group>"; };
 		E0EED84D1C7B62C900DE9B8A /* ClassicEnterpriseWithSeveralEmployeesNonNumericalIDS.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = ClassicEnterpriseWithSeveralEmployeesNonNumericalIDS.json; sourceTree = "<group>"; };
 		E0EED84F1C7B635800DE9B8A /* ClassicEnterpriseWithOneEmployeeNonNumericalIDS.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = ClassicEnterpriseWithOneEmployeeNonNumericalIDS.json; sourceTree = "<group>"; };
 		E0EED8541C7B724000DE9B8A /* WAReverseMapperMemoryTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WAReverseMapperMemoryTests.m; sourceTree = "<group>"; };
@@ -198,10 +203,9 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		E01C1C481C7C9F1800FFEF06 /* Files */ = {
+		E00688871C809C96005DF30F /* Categories */ = {
 			isa = PBXGroup;
 			children = (
-				E01C1C881C7CA0D600FFEF06 /* WAMapping.h */,
 				E01C1C491C7C9F1800FFEF06 /* NSArray+WAMergeableCollection.h */,
 				E01C1C4A1C7C9F1800FFEF06 /* NSArray+WAMergeableCollection.m */,
 				E01C1C4B1C7C9F1800FFEF06 /* NSMutableArray+WAMergeableCollection.h */,
@@ -218,10 +222,29 @@
 				E01C1C581C7C9F1800FFEF06 /* NSOrderedSet+WAMergeableCollection.m */,
 				E01C1C591C7C9F1800FFEF06 /* NSSet+WAMergeableCollection.h */,
 				E01C1C5A1C7C9F1800FFEF06 /* NSSet+WAMergeableCollection.m */,
-				E01C1C5B1C7C9F1800FFEF06 /* WABlockMapping.h */,
-				E01C1C5C1C7C9F1800FFEF06 /* WABlockMapping.m */,
+			);
+			name = Categories;
+			sourceTree = "<group>";
+		};
+		E00688881C809CA0005DF30F /* Stores */ = {
+			isa = PBXGroup;
+			children = (
+				E01C1C711C7C9F1800FFEF06 /* WAStoreProtocol.h */,
 				E01C1C5D1C7C9F1800FFEF06 /* WACoreDataStore.h */,
 				E01C1C5E1C7C9F1800FFEF06 /* WACoreDataStore.m */,
+				E01C1C661C7C9F1800FFEF06 /* WAMemoryStore.h */,
+				E01C1C671C7C9F1800FFEF06 /* WAMemoryStore.m */,
+				E006888A1C809CF4005DF30F /* WANSCodingStore.h */,
+				E006888B1C809CF4005DF30F /* WANSCodingStore.m */,
+			);
+			name = Stores;
+			sourceTree = "<group>";
+		};
+		E00688891C809CC5005DF30F /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				E01C1C5B1C7C9F1800FFEF06 /* WABlockMapping.h */,
+				E01C1C5C1C7C9F1800FFEF06 /* WABlockMapping.m */,
 				E01C1C5F1C7C9F1800FFEF06 /* WAEntityMapping.h */,
 				E01C1C601C7C9F1800FFEF06 /* WAEntityMapping.m */,
 				E01C1C611C7C9F1800FFEF06 /* WAMapper.h */,
@@ -231,8 +254,6 @@
 				E01C1C631C7C9F1800FFEF06 /* WAMappingMacros.h */,
 				E01C1C641C7C9F1800FFEF06 /* WAMappingRegistrar.h */,
 				E01C1C651C7C9F1800FFEF06 /* WAMappingRegistrar.m */,
-				E01C1C661C7C9F1800FFEF06 /* WAMemoryStore.h */,
-				E01C1C671C7C9F1800FFEF06 /* WAMemoryStore.m */,
 				E01C1C681C7C9F1800FFEF06 /* WAMergeableCollectionProtocol.h */,
 				E01C1C691C7C9F1800FFEF06 /* WAPropertyMapping.h */,
 				E01C1C6A1C7C9F1800FFEF06 /* WAPropertyMapping.m */,
@@ -240,7 +261,17 @@
 				E01C1C6C1C7C9F1800FFEF06 /* WAPropertyTransformation.m */,
 				E01C1C6D1C7C9F1800FFEF06 /* WARelationshipMapping.h */,
 				E01C1C6E1C7C9F1800FFEF06 /* WARelationshipMapping.m */,
-				E01C1C711C7C9F1800FFEF06 /* WAStoreProtocol.h */,
+			);
+			name = Core;
+			sourceTree = "<group>";
+		};
+		E01C1C481C7C9F1800FFEF06 /* Files */ = {
+			isa = PBXGroup;
+			children = (
+				E01C1C881C7CA0D600FFEF06 /* WAMapping.h */,
+				E00688881C809CA0005DF30F /* Stores */,
+				E00688871C809C96005DF30F /* Categories */,
+				E00688891C809CC5005DF30F /* Core */,
 			);
 			path = Files;
 			sourceTree = "<group>";
@@ -252,6 +283,7 @@
 				E05EC6101C73F69A0060063B /* WAMapperCoreDataStoreTests.m */,
 				E06B748A1C73C74F00595AB3 /* WAPropertyTransformationTests.m */,
 				E0EED8541C7B724000DE9B8A /* WAReverseMapperMemoryTests.m */,
+				E0DAAB4F1C80BA0100703BB4 /* WANSCodingStoreTests.m */,
 			);
 			name = Specs;
 			sourceTree = "<group>";
@@ -541,6 +573,7 @@
 			files = (
 				E01C1C801C7C9F1800FFEF06 /* WAMemoryStore.m in Sources */,
 				E01C1C7C1C7C9F1800FFEF06 /* WACoreDataStore.m in Sources */,
+				E006888C1C809CF4005DF30F /* WANSCodingStore.m in Sources */,
 				E01C1C7A1C7C9F1800FFEF06 /* NSSet+WAMergeableCollection.m in Sources */,
 				E01C1C7E1C7C9F1800FFEF06 /* WAMapper.m in Sources */,
 				E01C1C741C7C9F1800FFEF06 /* NSMutableDictionary+WASubDictionary.m in Sources */,
@@ -574,6 +607,7 @@
 				E05EC62C1C73FA0D0060063B /* EmployeeCD.m in Sources */,
 				E05EC62B1C73FA0D0060063B /* EmployeeCD+CoreDataProperties.m in Sources */,
 				E05EC6141C73F78E0060063B /* Model.xcdatamodeld in Sources */,
+				E0DAAB501C80BA0100703BB4 /* WANSCodingStoreTests.m in Sources */,
 				E05EC6111C73F69A0060063B /* WAMapperCoreDataStoreTests.m in Sources */,
 				E0EED8551C7B724000DE9B8A /* WAReverseMapperMemoryTests.m in Sources */,
 				E05EC6291C73FA0D0060063B /* EnterpriseCD+CoreDataProperties.m in Sources */,
