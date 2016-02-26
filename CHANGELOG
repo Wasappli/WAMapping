@@ -1,0 +1,6 @@
+## 0.0.2 - Released Feb 26, 2015
+- Exposed the store on WAMapper
+- Added a new store: `WANSCodingStore`
+
+## 0.0.1 - Released Feb 23, 2015
+Initial release
