@@ -1,3 +1,8 @@
+## 0.0.3 - Released Feb 29, 2015
+- Added `WANSCodingStore` to the main header
+- Added a way to register default mapping block for specific classes.
+For example, you can now add a default mapping block to turn `strings` to `NSDate`
+
 ## 0.0.2 - Released Feb 26, 2015
 - Exposed the store on WAMapper
 - Added a new store: `WANSCodingStore`

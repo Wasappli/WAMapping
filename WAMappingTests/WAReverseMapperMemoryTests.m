@@ -33,8 +33,11 @@ describe(@"WAReverseMapperMemoryTests", ^{
         __block Employee *firstEmployee = nil;
         __block Employee *secondEmployee = nil;
         
-        NSDateFormatter *dateFormatter = [NSDateFormatter new];
-        [dateFormatter setDateFormat:@"yyyy-MM-dd"];
+        NSDateFormatter *defaultDateFormatter = [NSDateFormatter new];
+        [defaultDateFormatter setDateFormat:@"yyyy-MM-dd"];
+        
+        NSDateFormatter *birthDateFormatter = [NSDateFormatter new];
+        [birthDateFormatter setDateFormat:@"yyyy"];
         
         beforeAll(^{
             enterpriseMapping = [WAEntityMapping mappingForEntityName:@"Enterprise"];
@@ -46,19 +49,20 @@ describe(@"WAReverseMapperMemoryTests", ^{
             [enterpriseMapping addAttributeMappingsFromDictionary:@{
                                                                     @"id": @"itemID",
                                                                     @"name": @"name",
-                                                                    @"address.street_number": @"streetNumber"}];
-            
-            [enterpriseMapping addMappingFromSourceProperty:@"creation_date"
-                                      toDestinationProperty:@"creationDate"
-                                                  withBlock:^id(id value) {
-                                                      return [dateFormatter dateFromString:value];
-                                                  }
-                                               reverseBlock:^id(id value) {
-                                                   return [dateFormatter stringFromDate:value];
-                                               }];
+                                                                    @"address.street_number": @"streetNumber",
+                                                                    @"creation_date": @"creationDate"}];
             
             [employeeMapping addAttributeMappingsFromDictionary:@{@"id": @"itemID",
                                                                   @"first_name": @"firstName"}];
+            
+            [employeeMapping addMappingFromSourceProperty:@"birth_date"
+                                      toDestinationProperty:@"birthDate"
+                                                  withBlock:^id(id value) {
+                                                      return [birthDateFormatter dateFromString:value];
+                                                  }
+                                               reverseBlock:^id(id value) {
+                                                   return [birthDateFormatter stringFromDate:value];
+                                               }];
             
             employeesRelationship = [WARelationshipMapping relationshipMappingFromSourceProperty:@"employees" toDestinationProperty:@"employees" withMapping:employeeMapping];
             WARelationshipMapping *orderedEmployeesRelationship = [WARelationshipMapping relationshipMappingFromSourceProperty:@"ordered_employees" toDestinationProperty:@"orderedEmployees" withMapping:employeeMapping];
@@ -75,6 +79,17 @@ describe(@"WAReverseMapperMemoryTests", ^{
             store = [[WAMemoryStore alloc] init];
             reverseMapper = [[WAReverseMapper alloc] init];
             
+            id(^fromDateMappingBlock)(id ) = ^id(id value) {
+                if ([value isKindOfClass:[NSDate class]]) {
+                    return [defaultDateFormatter stringFromDate:value];
+                }
+                
+                return value;
+            };
+            
+            [reverseMapper addReverseDefaultMappingBlock:fromDateMappingBlock
+                                     forDestinationClass:[NSDate class]];
+            
             enterprise = [store newObjectForMapping:enterpriseMapping];
             enterprise.name = @"Wasappli";
             enterprise.streetNumber = @5149;
@@ -82,6 +97,7 @@ describe(@"WAReverseMapperMemoryTests", ^{
             
             firstEmployee = [store newObjectForMapping:employeeMapping];
             firstEmployee.firstName = @"Marian";
+            firstEmployee.birthDate = [NSDate dateWithTimeIntervalSince1970:194333434];
             
             secondEmployee = [store newObjectForMapping:employeeMapping];
             secondEmployee.firstName = @"Jérémy";
@@ -139,6 +155,7 @@ describe(@"WAReverseMapperMemoryTests", ^{
                 [[employees shouldNot] beNil];
                 [[employees should] haveCountOf:2];
                 [[[employees firstObject][@"first_name"] should] equal:@"Marian"];
+                [[[employees firstObject][@"birth_date"] should] equal:@"1976"];
             });
             
             afterAll(^{

@@ -22,6 +22,7 @@
 @interface WAMapper ()
 
 @property (nonatomic, strong) id <WAStoreProtocol> store;
+@property (nonatomic, strong) NSMutableDictionary *defaultMappingBlocks;
 
 @end
 
@@ -53,6 +54,17 @@
     [self.store commitTransaction];
     
     completion(mappedObjects);
+}
+
+- (void)addDefaultMappingBlock:(WAMappingBlock)mappingBlock forDestinationClass:(Class)destinationClass {
+    WAMParameterAssert(destinationClass);
+    WAMParameterAssert(mappingBlock);
+    
+    if (!self.defaultMappingBlocks) {
+        self.defaultMappingBlocks = [NSMutableDictionary dictionary];
+    }
+    
+    self.defaultMappingBlocks[NSStringFromClass(destinationClass)] = mappingBlock;
 }
 
 #pragma mark - Private methods
@@ -171,14 +183,26 @@
         }
         
         WAPropertyMapping *propertyMapping = mapping.attributeMappings[key];
+        id valueAfterMappingBlock = finalValue;
         if (finalValue) {
-            finalValue = propertyMapping.mappingBlock(finalValue);
+            valueAfterMappingBlock = propertyMapping.mappingBlock(finalValue);
         }
         
-        if ((!finalValue && [value isEqual:[NSNull null]])
+        if ([valueAfterMappingBlock isEqual:finalValue]) {
+            // This means that the property has no real transformation. Use global one
+            WAMappingBlock defaultMappingBlock = [self _defaultMappingBlockForDestinationClass:
+                                                  NSClassFromString([WAPropertyTransformation propertyTypeStringRepresentationFromPropertyName:propertyMapping.destinationPropertyName
+                                                                                                                                     forObject:object])];
+            
+            if (defaultMappingBlock) {
+                valueAfterMappingBlock = defaultMappingBlock(finalValue);
+            }
+        }
+        
+        if ((!valueAfterMappingBlock && [value isEqual:[NSNull null]])
             ||
-            finalValue) {
-            [object wa_setValueIfChanged:finalValue
+            valueAfterMappingBlock) {
+            [object wa_setValueIfChanged:valueAfterMappingBlock
                                   forKey:propertyMapping.destinationPropertyName];
         }
     }
@@ -282,6 +306,15 @@
     }
     
     return [relationShipObjects copy];
+}
+
+- (WAMappingBlock)_defaultMappingBlockForDestinationClass:(Class)destinationClass {
+    NSString *key = NSStringFromClass(destinationClass);
+    if (!key) {
+        return nil;
+    }
+    
+    return self.defaultMappingBlocks[key];
 }
 
 @end

@@ -16,5 +16,6 @@
 @dynamic itemID;
 @dynamic firstName;
 @dynamic enterprise;
+@dynamic birthDate;
 
 @end

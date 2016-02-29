@@ -18,6 +18,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nullable, nonatomic, retain) NSNumber *itemID;
 @property (nullable, nonatomic, retain) NSString *firstName;
 @property (nullable, nonatomic, retain) EnterpriseCD *enterprise;
+@property (nullable, nonatomic, retain) NSDate *birthDate;
 
 @end
 

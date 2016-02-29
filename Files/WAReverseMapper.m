@@ -16,6 +16,12 @@
 
 #import "NSMutableDictionary+WASubDictionary.h"
 
+@interface WAReverseMapper ()
+
+@property (nonatomic, strong) NSMutableDictionary *defaultReverseMappingBlocks;
+
+@end
+
 @implementation WAReverseMapper
 
 - (NSArray *)reverseMapObjects:(NSArray *)objects fromMapping:(WAEntityMapping *)mapping shouldMapRelationship:(WAReverseMapperShouldMapRelationshipBlock)shouldMapRelationshipBlock {
@@ -49,6 +55,17 @@
     }
     
     return [allObjectsAsDictionaries copy];
+}
+
+- (void)addReverseDefaultMappingBlock:(WAMappingBlock)reverseMappingBlock forDestinationClass:(Class)destinationClass {
+    WAMParameterAssert(destinationClass);
+    WAMParameterAssert(reverseMappingBlock);
+    
+    if (!self.defaultReverseMappingBlocks) {
+        self.defaultReverseMappingBlocks = [NSMutableDictionary dictionary];
+    }
+    
+    self.defaultReverseMappingBlocks[NSStringFromClass(destinationClass)] = reverseMappingBlock;
 }
 
 #pragma mark - Private
@@ -85,10 +102,20 @@
     for (NSString *key in [reverseMapping allKeys]) {
         WAPropertyMapping *propertyMapping = reverseMapping[key];
         
-        id value = [object valueForKeyPath:key];
-        value = propertyMapping.reverseMappingBlock(value);
+        id value      = [object valueForKeyPath:key];
+        id finalValue = propertyMapping.reverseMappingBlock(value);
         
-        [objectAsDictionary wa_setObject:value ?: [NSNull null] byCreatingDictionariesForKeyPath:propertyMapping.sourcePropertyName];
+        if ([finalValue isEqual:value]) {
+            WAMappingBlock defaultReverseMappingBlock = [self _defaultReverseMappingBlockForDestinationClass:
+                                                         NSClassFromString([WAPropertyTransformation propertyTypeStringRepresentationFromPropertyName:propertyMapping.destinationPropertyName
+                                                                                                                                            forObject:object])];
+            
+            if (defaultReverseMappingBlock) {
+                finalValue = defaultReverseMappingBlock(value);
+            }
+        }
+        
+        [objectAsDictionary wa_setObject:finalValue ?: [NSNull null] byCreatingDictionariesForKeyPath:propertyMapping.sourcePropertyName];
     }
     
     // Map the relation ships
@@ -174,6 +201,15 @@
     }
     
     return [finalRepresentation copy];
+}
+
+- (WAMappingBlock)_defaultReverseMappingBlockForDestinationClass:(Class)destinationClass {
+    NSString *key = NSStringFromClass(destinationClass);
+    if (!key) {
+        return nil;
+    }
+    
+    return self.defaultReverseMappingBlocks[key];
 }
 
 @end

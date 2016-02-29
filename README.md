@@ -197,6 +197,55 @@ json = [reverseMapper reverseMapObjects:enterprises
                             fromMapping:enterpriseMapping
                   shouldMapRelationship:nil];
 ```
+
+# Default mappings
+If you have a server which returns all dates within the same format, then you can ask the mapper or the reverse mapper once to transform the value.
+
+Instead of writing
+
+```objc
+[enterpriseMapping addAttributeMappingsFromDictionary:@{
+                                                        @"id": @"itemID",
+                                                        @"name": @"name",
+                                                        @"address.street_number": @"streetNumber"
+                                                        }];      
+                                                   
+// Map custom values. Here an `NSDate` from a string using an `NSDateTransformer`
+[enterpriseMapping addMappingFromSourceProperty:@"creation_date"
+                          toDestinationProperty:@"creationDate"
+                                      withBlock:^id(id value) {
+                                          return [dateFormatter dateFromString:value];
+                                      }
+                                   reverseBlock:^id(id value) {
+                                       return [dateFormatter stringFromDate:value];
+                                   }];
+```
+
+You would write
+
+```objc
+[enterpriseMapping addAttributeMappingsFromDictionary:@{
+                                                        @"id": @"itemID",
+                                                        @"name": @"name",
+                                                        @"address.street_number": @"streetNumber",
+                                                        @"creation_date": @"creationDate"
+                                                        }];
+
+
+id(^toDateMappingBlock)(id ) = ^id(id value) {
+    if ([value isKindOfClass:[NSString class]]) {
+        return [dateFormatter dateFromString:value];
+    }
+    
+    return value;
+};
+
+[mapper addDefaultMappingBlock:toDateMappingBlock
+           forDestinationClass:[NSDate class]];
+```
+
+The same thing happens to the reverse mapper. Note that if you provide a custom mapping on an `NSDate` object for a specific property (like a date with only the year), you can add the property to the entity mapping which will override the default behavior for this specific property.
+
 # Side notes
 ## TODOs
 

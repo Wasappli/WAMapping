@@ -7,6 +7,7 @@
 //
 
 @import Foundation;
+#import "WABlockMapping.h"
 
 @class WAEntityMapping;
 
@@ -27,5 +28,13 @@ typedef BOOL (^WAReverseMapperShouldMapRelationshipBlock)(NSString *sourceRelati
  *  @return an array of dictionary which are a representation of the objects
  */
 - (NSArray <NSDictionary *>*)reverseMapObjects:(NSArray *)objects fromMapping:(WAEntityMapping *)mapping shouldMapRelationship:(WAReverseMapperShouldMapRelationshipBlock)shouldMapRelationshipBlock;
+
+/**
+ *  Add a reverse default mapping block for a class. For example, you could have an API returning dates all with the same format. You can register the transformation once here.
+ *
+ *  @param reverseMappingBlock the reverse mapping block called to transform the value
+ *  @param destinationClass    the destination class
+ */
+- (void)addReverseDefaultMappingBlock:(WAMappingBlock)reverseMappingBlock forDestinationClass:(Class)destinationClass;
 
 @end

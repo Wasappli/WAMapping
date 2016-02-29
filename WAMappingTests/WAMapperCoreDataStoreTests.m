@@ -32,8 +32,11 @@ describe(@"WAMapperCoreDataStoreTests", ^{
         __block WACoreDataStore *store = nil;
         __block WAMapper *mapper = nil;
         
-        NSDateFormatter *dateFormatter = [NSDateFormatter new];
-        [dateFormatter setDateFormat:@"yyyy-MM-dd"];
+        NSDateFormatter *defaultDateFormatter = [NSDateFormatter new];
+        [defaultDateFormatter setDateFormat:@"yyyy-MM-dd"];
+        
+        NSDateFormatter *birthDateFormatter = [NSDateFormatter new];
+        [birthDateFormatter setDateFormat:@"yyyy"];
         
         beforeAll(^{
             enterpriseMapping = [WAEntityMapping mappingForEntityName:@"Enterprise"];
@@ -45,16 +48,21 @@ describe(@"WAMapperCoreDataStoreTests", ^{
             [enterpriseMapping addAttributeMappingsFromDictionary:@{
                                                                     @"id": @"itemID",
                                                                     @"name": @"name",
-                                                                    @"address.street_number": @"streetNumber"}];
+                                                                    @"address.street_number": @"streetNumber",
+                                                                    @"creation_date": @"creationDate"
+                                                                    }];
             
-            [enterpriseMapping addMappingFromSourceProperty:@"creation_date"
-                                           toDestinationProperty:@"creationDate"
-                                                  withBlock:^id(id value) {
-                                                      return [dateFormatter dateFromString:value];
-                                                  }];
+            // We don't use the employee property mapping with date transformer but a default one on mapper instead
             
             [employeeMapping addAttributeMappingsFromDictionary:@{@"id": @"itemID",
                                                                   @"first_name": @"firstName"}];
+            
+            // Test that we can override the default date formatter mapping block
+            [employeeMapping addMappingFromSourceProperty:@"birth_date"
+                                      toDestinationProperty:@"birthDate"
+                                                  withBlock:^id(id value) {
+                                                      return [birthDateFormatter dateFromString:value];
+                                                  }];
             
             employeesRelationship = [WARelationshipMapping relationshipMappingFromSourceProperty:@"employees" toDestinationProperty:@"employees" withMapping:employeeMapping];
             WARelationshipMapping *orderedEmployeesRelationship = [WARelationshipMapping relationshipMappingFromSourceProperty:@"ordered_employees" toDestinationProperty:@"orderedEmployees" withMapping:employeeMapping];
@@ -75,6 +83,17 @@ describe(@"WAMapperCoreDataStoreTests", ^{
             
             store = [[WACoreDataStore alloc] initWithManagedObjectContext:[NSManagedObjectContext MR_defaultContext]];
             mapper = [[WAMapper alloc] initWithStore:store];
+            
+id(^toDateMappingBlock)(id ) = ^id(id value) {
+    if ([value isKindOfClass:[NSString class]]) {
+        return [defaultDateFormatter dateFromString:value];
+    }
+    
+    return value;
+};
+
+[mapper addDefaultMappingBlock:toDateMappingBlock
+           forDestinationClass:[NSDate class]];
         });
         
         afterEach(^{
@@ -106,7 +125,7 @@ describe(@"WAMapperCoreDataStoreTests", ^{
                 [[enterprise.name should] equal:json[@"name"]];
                 [[enterprise.streetNumber should] equal:json[@"address"][@"street_number"]];
                 [[enterprise.creationDate should] beKindOfClass:[NSDate class]];
-                [[enterprise.creationDate should] equal:[dateFormatter dateFromString:json[@"creation_date"]]];
+                [[enterprise.creationDate should] equal:[defaultDateFormatter dateFromString:json[@"creation_date"]]];
             });
         });
         
@@ -242,6 +261,7 @@ describe(@"WAMapperCoreDataStoreTests", ^{
             specify(^{
                 EmployeeCD *employee = [enterprise.employees anyObject];
                 [[employee.firstName should] equal:@"Marian"];
+                [[employee.birthDate should] beKindOfClass:[NSDate class]];
             });
         });
         

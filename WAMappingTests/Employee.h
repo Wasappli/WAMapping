@@ -15,5 +15,6 @@
 @property (nonatomic, strong) NSNumber *itemID;
 @property (nonatomic, strong) NSString *firstName;
 @property (nonatomic, strong) Enterprise *enterprise;
+@property (nonatomic, strong) NSDate *birthDate;
 
 @end

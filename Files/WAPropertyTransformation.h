@@ -11,6 +11,7 @@
 @interface WAPropertyTransformation : NSObject
 
 + (id)propertyValue:(id)initialValue fromPropertyName:(NSString *)propertyName forObject:(id)object;
++ (NSString *)propertyTypeStringRepresentationFromPropertyName:(NSString *)propertyName forObject:(id)object;
 + (BOOL)isClassACollection:(Class)class;
 + (BOOL)isClassAMutableCollection:(Class)class;
 + (id)convertObject:(id)object toClass:(Class)destinationClass;

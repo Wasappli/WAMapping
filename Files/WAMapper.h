@@ -7,6 +7,7 @@
 //
 
 @import Foundation;
+#import "WABlockMapping.h"
 
 @class WAEntityMapping;
 @protocol WAStoreProtocol;
@@ -43,6 +44,14 @@ typedef void (^WAMapperCompletionBlock)(NSArray *mappedObjects);
  *  @param completion a completion block called when all objects have been mapped
  */
 - (void)mapFromRepresentation:(id)json mapping:(WAEntityMapping *)mapping completion:(WAMapperCompletionBlock)completion;
+
+/**
+ *  Add a default mapping block for a class. For example, you could have an API returning dates all with the same format. You can register the transformation once here.
+ *
+ *  @param mappingBlock     the mapping block called to transform the value
+ *  @param destinationClass the destination class
+ */
+- (void)addDefaultMappingBlock:(WAMappingBlock)mappingBlock forDestinationClass:(Class)destinationClass;
 
 @property (nonatomic, strong, readonly) id <WAStoreProtocol> store;
 
