@@ -83,7 +83,7 @@ describe(@"WAMapperInMemoryStoreTests", ^{
                                                          error:nil];
                 [mapper mapFromRepresentation:json
                                       mapping:enterpriseMapping
-                                   completion:^(NSArray *mappedObjects) {
+                                   completion:^(NSArray *mappedObjects, NSError *error) {
                                        enterprise = [mappedObjects firstObject];
                                    }];
                 
@@ -94,7 +94,7 @@ describe(@"WAMapperInMemoryStoreTests", ^{
             });
             
             specify(^{
-                [[enterprise should] beMemberOfClass:[Enterprise class]];
+                [[enterprise should] beKindOfClass:[Enterprise class]];
             });
             
             specify(^{
@@ -124,7 +124,7 @@ describe(@"WAMapperInMemoryStoreTests", ^{
                                                             error:nil];
                 [mapper mapFromRepresentation:json
                                       mapping:enterpriseMapping
-                                   completion:^(NSArray *mappedObjects) {
+                                   completion:^(NSArray *mappedObjects, NSError *error) {
                                        enterprise1 = [mappedObjects firstObject];
                                    }];
                 
@@ -135,7 +135,7 @@ describe(@"WAMapperInMemoryStoreTests", ^{
                                                          error:nil];
                 [mapper mapFromRepresentation:json
                                       mapping:enterpriseMapping
-                                   completion:^(NSArray *mappedObjects) {
+                                   completion:^(NSArray *mappedObjects, NSError *error) {
                                        enterprise2 = [mappedObjects firstObject];
                                    }];
                 
@@ -163,7 +163,7 @@ describe(@"WAMapperInMemoryStoreTests", ^{
                                                             error:nil];
                 [mapper mapFromRepresentation:json
                                       mapping:enterpriseMapping
-                                   completion:^(NSArray *mappedObjects) {
+                                   completion:^(NSArray *mappedObjects, NSError *error) {
                                        enterprise1 = [mappedObjects firstObject];
                                    }];
                 
@@ -174,7 +174,7 @@ describe(@"WAMapperInMemoryStoreTests", ^{
                                                          error:nil];
                 [mapper mapFromRepresentation:json
                                       mapping:enterpriseMapping
-                                   completion:^(NSArray *mappedObjects) {
+                                   completion:^(NSArray *mappedObjects, NSError *error) {
                                        enterprise2 = [mappedObjects firstObject];
                                    }];
                 
@@ -201,7 +201,7 @@ describe(@"WAMapperInMemoryStoreTests", ^{
                                                             error:nil];
                 [mapper mapFromRepresentation:json
                                       mapping:enterpriseMapping
-                                   completion:^(NSArray *mappedObjects) {
+                                   completion:^(NSArray *mappedObjects, NSError *error) {
                                        enterprise = [mappedObjects firstObject];
                                    }];
             });
@@ -227,7 +227,7 @@ describe(@"WAMapperInMemoryStoreTests", ^{
                                                             error:nil];
                 [mapper mapFromRepresentation:json
                                       mapping:enterpriseMapping
-                                   completion:^(NSArray *mappedObjects) {
+                                   completion:^(NSArray *mappedObjects, NSError *error) {
                                        enterprise = [mappedObjects firstObject];
                                    }];
             });
@@ -258,10 +258,10 @@ describe(@"WAMapperInMemoryStoreTests", ^{
                                                             error:nil];
                 [mapper mapFromRepresentation:json[@"employees"]
                                       mapping:employeeMapping
-                                   completion:^(NSArray *mappedObjects) {
+                                   completion:^(NSArray *mappedObjects, NSError *error) {
                                        [mapper mapFromRepresentation:json[@"enterprise"]
                                                              mapping:enterpriseMapping
-                                                          completion:^(NSArray *mappedObjects) {
+                                                          completion:^(NSArray *mappedObjects, NSError *error) {
                                                               enterprise = [mappedObjects firstObject];
                                                           }];
                                    }];
@@ -293,10 +293,10 @@ describe(@"WAMapperInMemoryStoreTests", ^{
                                                             error:nil];
                 [mapper mapFromRepresentation:json[@"employees"]
                                       mapping:employeeMapping
-                                   completion:^(NSArray *mappedObjects) {
+                                   completion:^(NSArray *mappedObjects, NSError *error) {
                                        [mapper mapFromRepresentation:json[@"enterprise"]
                                                              mapping:enterpriseMapping
-                                                          completion:^(NSArray *mappedObjects) {
+                                                          completion:^(NSArray *mappedObjects, NSError *error) {
                                                               enterprise = [mappedObjects firstObject];
                                                           }];
                                    }];
@@ -329,10 +329,10 @@ describe(@"WAMapperInMemoryStoreTests", ^{
                                                             error:nil];
                 [mapper mapFromRepresentation:json[@"employees"]
                                       mapping:employeeMapping
-                                   completion:^(NSArray *mappedObjects) {
+                                   completion:^(NSArray *mappedObjects, NSError *error) {
                                        [mapper mapFromRepresentation:json[@"enterprise"]
                                                              mapping:enterpriseMapping
-                                                          completion:^(NSArray *mappedObjects) {
+                                                          completion:^(NSArray *mappedObjects, NSError *error) {
                                                               enterprise = [mappedObjects firstObject];
                                                           }];
                                    }];
@@ -359,10 +359,10 @@ describe(@"WAMapperInMemoryStoreTests", ^{
                                                             error:nil];
                 [mapper mapFromRepresentation:json[@"employees"]
                                       mapping:employeeMapping
-                                   completion:^(NSArray *mappedObjects) {
+                                   completion:^(NSArray *mappedObjects, NSError *error) {
                                        [mapper mapFromRepresentation:json[@"enterprise"]
                                                              mapping:enterpriseMapping
-                                                          completion:^(NSArray *mappedObjects) {
+                                                          completion:^(NSArray *mappedObjects, NSError *error) {
                                                               enterprise = [mappedObjects firstObject];
                                                           }];
                                    }];
@@ -389,7 +389,7 @@ describe(@"WAMapperInMemoryStoreTests", ^{
                                                             error:nil];
                 [mapper mapFromRepresentation:json
                                       mapping:employeeMapping
-                                   completion:^(NSArray *mappedObjects) {
+                                   completion:^(NSArray *mappedObjects, NSError *error) {
                                        employee = [mappedObjects firstObject];
                                    }];
             });
@@ -400,7 +400,7 @@ describe(@"WAMapperInMemoryStoreTests", ^{
             
             specify(^{
                 [[employee.enterprise shouldNot] beNil];
-                [[employee.enterprise should] beMemberOfClass:[Enterprise class]];
+                [[employee.enterprise should] beKindOfClass:[Enterprise class]];
             });
             
             specify(^{
@@ -422,7 +422,7 @@ describe(@"WAMapperInMemoryStoreTests", ^{
                                                          error:nil];
                 [mapper mapFromRepresentation:json
                                       mapping:enterpriseMapping
-                                   completion:^(NSArray *mappedObjects) {
+                                   completion:^(NSArray *mappedObjects, NSError *error) {
                                        enterprise = [mappedObjects firstObject];
                                    }];
                 
@@ -456,7 +456,7 @@ describe(@"WAMapperInMemoryStoreTests", ^{
                                                             error:nil];
                 [mapper mapFromRepresentation:json
                                       mapping:enterpriseMapping
-                                   completion:^(NSArray *mappedObjects) {
+                                   completion:^(NSArray *mappedObjects, NSError *error) {
                                        enterprise1 = [mappedObjects firstObject];
                                    }];
                 
@@ -467,7 +467,7 @@ describe(@"WAMapperInMemoryStoreTests", ^{
                                                          error:nil];
                 [mapper mapFromRepresentation:json
                                       mapping:enterpriseMapping
-                                   completion:^(NSArray *mappedObjects) {
+                                   completion:^(NSArray *mappedObjects, NSError *error) {
                                        enterprise2 = [mappedObjects firstObject];
                                    }];
                 
@@ -495,7 +495,7 @@ describe(@"WAMapperInMemoryStoreTests", ^{
                                                             error:nil];
                 [mapper mapFromRepresentation:json
                                       mapping:enterpriseMapping
-                                   completion:^(NSArray *mappedObjects) {
+                                   completion:^(NSArray *mappedObjects, NSError *error) {
                                        enterprise1 = [mappedObjects firstObject];
                                    }];
                 
@@ -506,7 +506,7 @@ describe(@"WAMapperInMemoryStoreTests", ^{
                                                          error:nil];
                 [mapper mapFromRepresentation:json
                                       mapping:enterpriseMapping
-                                   completion:^(NSArray *mappedObjects) {
+                                   completion:^(NSArray *mappedObjects, NSError *error) {
                                        enterprise2 = [mappedObjects firstObject];
                                    }];
                 
@@ -534,7 +534,7 @@ describe(@"WAMapperInMemoryStoreTests", ^{
                                                             error:nil];
                 [mapper mapFromRepresentation:json
                                       mapping:enterpriseMapping
-                                   completion:^(NSArray *mappedObjects) {
+                                   completion:^(NSArray *mappedObjects, NSError *error) {
                                        enterprise1 = [mappedObjects firstObject];
                                    }];
                 
@@ -545,7 +545,7 @@ describe(@"WAMapperInMemoryStoreTests", ^{
                                                          error:nil];
                 [mapper mapFromRepresentation:json
                                       mapping:enterpriseMapping
-                                   completion:^(NSArray *mappedObjects) {
+                                   completion:^(NSArray *mappedObjects, NSError *error) {
                                        enterprise2 = [mappedObjects firstObject];
                                    }];
                 
@@ -581,7 +581,7 @@ describe(@"WAMapperInMemoryStoreTests", ^{
                                                             error:nil];
                 [mapper mapFromRepresentation:json
                                       mapping:enterpriseMapping
-                                   completion:^(NSArray *mappedObjects) {
+                                   completion:^(NSArray *mappedObjects, NSError *error) {
                                        enterprise1 = [mappedObjects firstObject];
                                    }];
                 
@@ -592,7 +592,7 @@ describe(@"WAMapperInMemoryStoreTests", ^{
                                                          error:nil];
                 [mapper mapFromRepresentation:json
                                       mapping:enterpriseMapping
-                                   completion:^(NSArray *mappedObjects) {
+                                   completion:^(NSArray *mappedObjects, NSError *error) {
                                        enterprise2 = [mappedObjects firstObject];
                                    }];
                 
@@ -627,7 +627,7 @@ describe(@"WAMapperInMemoryStoreTests", ^{
                                                             error:nil];
                 [mapper mapFromRepresentation:json
                                       mapping:enterpriseMapping
-                                   completion:^(NSArray *mappedObjects) {
+                                   completion:^(NSArray *mappedObjects, NSError *error) {
                                        enterprise1 = [mappedObjects firstObject];
                                    }];
                 
@@ -638,7 +638,7 @@ describe(@"WAMapperInMemoryStoreTests", ^{
                                                          error:nil];
                 [mapper mapFromRepresentation:json
                                       mapping:enterpriseMapping
-                                   completion:^(NSArray *mappedObjects) {
+                                   completion:^(NSArray *mappedObjects, NSError *error) {
                                        enterprise2 = [mappedObjects firstObject];
                                    }];
                 
@@ -673,7 +673,7 @@ describe(@"WAMapperInMemoryStoreTests", ^{
                                                          error:nil];
                 [mapper mapFromRepresentation:json
                                       mapping:enterpriseMapping
-                                   completion:^(NSArray *mappedObjects) {
+                                   completion:^(NSArray *mappedObjects, NSError *error) {
                                        enterprise = [mappedObjects firstObject];
                                    }];
                 

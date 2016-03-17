@@ -23,8 +23,20 @@
 @end
 
 @implementation WAReverseMapper
+@synthesize progress = _progress;
 
-- (NSArray *)reverseMapObjects:(NSArray *)objects fromMapping:(WAEntityMapping *)mapping shouldMapRelationship:(WAReverseMapperShouldMapRelationshipBlock)shouldMapRelationshipBlock {
+- (instancetype)init {
+    self = [super init];
+    if (self) {
+        self->_progress             = [NSProgress progressWithTotalUnitCount:-1];
+        self->_progress.cancellable = YES;
+        self->_progress.pausable    = NO;
+    }
+    
+    return self;
+}
+
+- (NSArray *)reverseMapObjects:(NSArray *)objects fromMapping:(WAEntityMapping *)mapping shouldMapRelationship:(WAReverseMapperShouldMapRelationshipBlock)shouldMapRelationshipBlock error:(NSError *__autoreleasing *)error {
     WAMParameterAssert(objects);
     
     NSArray *resolvedArray = nil;
@@ -40,11 +52,23 @@
         return nil;
     }
     
+    self->_progress.totalUnitCount = [objects count];
+    
     NSMutableArray *allObjectsAsDictionaries = [NSMutableArray array];
     // We use this dictionary to avoid infinite loops
     NSMutableDictionary *alreadyMappedObjects = [NSMutableDictionary dictionary];
     
     for (id obj in objects) {
+        if (self->_progress.isCancelled) {
+            if (error) {
+                *error = [NSError errorWithDomain:NSCocoaErrorDomain
+                                                 code:NSUserCancelledError
+                                             userInfo:nil];
+            }
+            
+            break;
+        }
+        
         NSDictionary *objectAsDictionary = [self _reverseMapObject:obj
                                                        withMapping:mapping
                                              shouldMapRelationship:shouldMapRelationshipBlock
@@ -52,6 +76,8 @@
         if (objectAsDictionary) {
             [allObjectsAsDictionaries addObject:objectAsDictionary];
         }
+        
+        self->_progress.completedUnitCount++;
     }
     
     return [allObjectsAsDictionaries copy];

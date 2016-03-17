@@ -246,6 +246,42 @@ id(^toDateMappingBlock)(id ) = ^id(id value) {
 
 The same thing happens to the reverse mapper. Note that if you provide a custom mapping on an `NSDate` object for a specific property (like a date with only the year), you can add the property to the entity mapping which will override the default behavior for this specific property.
 
+# Progress and cancellation
+Both `WAMapper` and `WAReverseMapper` support `NSProgress` by implementing `NSProgressReporting` protocol. Note that Apple explicitely says `Objects that adopt this protocol should typically be "one-shot"` which means you should use one `WAMapper` per map operation.
+
+## Progress
+You can track the progress using this little piece of code. Note that the progress counts the main top objects mapped (if your array contains one object with a thousand objects as relationship, the progress will not reflect the thousand subobjects mapped). This is per `NSProgress` class which supports child progress only from iOS 9.
+
+```objc
+[mapper.progress addObserver:self
+                  forKeyPath:NSStringFromSelector(@selector(fractionCompleted))
+                     options:NSKeyValueObservingOptionNew
+                     context:NULL];
+```
+
+```objc
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSString *,id> *)change context:(void *)context {
+    if ([keyPath isEqualToString:NSStringFromSelector(@selector(fractionCompleted))] && [object isKindOfClass:[NSProgress class]]) {
+        NSLog(@"Mapping progress = %f", [change[@"new"] doubleValue]);
+    } else {
+        [super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
+    }
+}
+```
+
+## Cancellation
+You can cancel the mapping or the reverse mapping using this piece of code. Note that for cancellation to happen, you have to call the mapping from an other thread!
+
+```objc
+dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
+    [mapper mapFromRepresentation:JSON mapping:employeeMapping completion:^(NSArray *mappedObjects, NSError *error) {
+        NSLog(@"Mapped objects %@ - Error %@", mappedObjects, error);
+    }];
+});
+
+[mapper.progress cancel];
+```
+
 # Side notes
 ## TODOs
 

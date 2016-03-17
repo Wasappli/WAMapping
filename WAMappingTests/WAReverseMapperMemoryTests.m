@@ -108,8 +108,9 @@ describe(@"WAReverseMapperMemoryTests", ^{
             
             beforeAll(^{
                 json = [[reverseMapper reverseMapObjects:@[enterprise]
-                                            fromMapping:enterpriseMapping
-                                  shouldMapRelationship:nil] firstObject];
+                                             fromMapping:enterpriseMapping
+                                   shouldMapRelationship:nil
+                                                   error:nil] firstObject];
             });
             
             specify(^{
@@ -146,7 +147,8 @@ describe(@"WAReverseMapperMemoryTests", ^{
                 
                 json = [[reverseMapper reverseMapObjects:@[enterprise]
                                              fromMapping:enterpriseMapping
-                                   shouldMapRelationship:nil] firstObject];
+                                   shouldMapRelationship:nil
+                                                   error:nil] firstObject];
                 
             });
             
@@ -174,7 +176,8 @@ describe(@"WAReverseMapperMemoryTests", ^{
                 
                 json = [[reverseMapper reverseMapObjects:@[enterprise]
                                              fromMapping:enterpriseMapping
-                                   shouldMapRelationship:nil] firstObject];
+                                   shouldMapRelationship:nil
+                                                   error:nil] firstObject];
                 
             });
             
@@ -204,7 +207,8 @@ describe(@"WAReverseMapperMemoryTests", ^{
                 
                 json = [[reverseMapper reverseMapObjects:@[enterprise]
                                              fromMapping:enterpriseMapping
-                                   shouldMapRelationship:nil] firstObject];
+                                   shouldMapRelationship:nil
+                                                   error:nil] firstObject];
                 
             });
             
@@ -234,7 +238,8 @@ describe(@"WAReverseMapperMemoryTests", ^{
                                            return NO;
                                        }
                                        return YES;
-                                   }] firstObject];
+                                   }
+                                                   error:nil] firstObject];
                 
             });
             
@@ -270,7 +275,8 @@ describe(@"WAReverseMapperMemoryTests", ^{
             beforeAll(^{
                 json = [[reverseMapper reverseMapObjects:@[firstEmployee]
                                              fromMapping:employeeMapping
-                                   shouldMapRelationship:nil] firstObject];
+                                   shouldMapRelationship:nil
+                                                   error:nil] firstObject];
                 
             });
             
@@ -299,7 +305,8 @@ describe(@"WAReverseMapperMemoryTests", ^{
                 firstEmployee.enterprise = enterprise;
                 json = [[reverseMapper reverseMapObjects:@[firstEmployee]
                                              fromMapping:employeeMapping
-                                   shouldMapRelationship:nil] firstObject];
+                                   shouldMapRelationship:nil
+                                                   error:nil] firstObject];
                 
             });
             
@@ -323,7 +330,8 @@ describe(@"WAReverseMapperMemoryTests", ^{
                 firstEmployee.itemID = @1;
                 json = [[reverseMapper reverseMapObjects:@[firstEmployee]
                                              fromMapping:employeeMapping
-                                   shouldMapRelationship:nil] firstObject];
+                                   shouldMapRelationship:nil
+                                                   error:nil] firstObject];
                 
             });
             
@@ -354,7 +362,8 @@ describe(@"WAReverseMapperMemoryTests", ^{
                 
                 json = [[reverseMapper reverseMapObjects:@[firstEmployee]
                                              fromMapping:employeeMapping
-                                   shouldMapRelationship:nil] firstObject];
+                                   shouldMapRelationship:nil
+                                                   error:nil] firstObject];
                 
             });
             

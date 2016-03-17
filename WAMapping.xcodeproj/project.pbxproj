@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		912A881C4C7A80B570A99EC4 /* libPods-WAMappingTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 868B326C1D1BA06F5CF195FD /* libPods-WAMappingTests.a */; };
+		B9BB3A2F860C0AEFC99052C0 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B0D050A9A09824A0CD594126 /* libPods.a */; };
 		E006888C1C809CF4005DF30F /* WANSCodingStore.m in Sources */ = {isa = PBXBuildFile; fileRef = E006888B1C809CF4005DF30F /* WANSCodingStore.m */; };
 		E01C1C721C7C9F1800FFEF06 /* NSArray+WAMergeableCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = E01C1C4A1C7C9F1800FFEF06 /* NSArray+WAMergeableCollection.m */; };
 		E01C1C731C7C9F1800FFEF06 /* NSMutableArray+WAMergeableCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = E01C1C4C1C7C9F1800FFEF06 /* NSMutableArray+WAMergeableCollection.m */; };
@@ -28,6 +29,9 @@
 		E01C1C831C7C9F1800FFEF06 /* WARelationshipMapping.m in Sources */ = {isa = PBXBuildFile; fileRef = E01C1C6E1C7C9F1800FFEF06 /* WARelationshipMapping.m */; };
 		E01C1C841C7C9F1800FFEF06 /* WAReverseMapper.m in Sources */ = {isa = PBXBuildFile; fileRef = E01C1C701C7C9F1800FFEF06 /* WAReverseMapper.m */; };
 		E01EA15B1C73D6FC0081461E /* ClassicEnterpriseWithOrderedEmployees.json in Resources */ = {isa = PBXBuildFile; fileRef = E01EA15A1C73D6FC0081461E /* ClassicEnterpriseWithOrderedEmployees.json */; };
+		E03BAC281C9B688E00006C89 /* Enterprises.json in Resources */ = {isa = PBXBuildFile; fileRef = E03BAC271C9B688E00006C89 /* Enterprises.json */; };
+		E03BAC2B1C9B711E00006C89 /* MyEnterprise.m in Sources */ = {isa = PBXBuildFile; fileRef = E03BAC2A1C9B711E00006C89 /* MyEnterprise.m */; };
+		E03BAC2E1C9B712E00006C89 /* MyEmployee.m in Sources */ = {isa = PBXBuildFile; fileRef = E03BAC2D1C9B712E00006C89 /* MyEmployee.m */; };
 		E05EC6071C73EE1A0060063B /* ClassicEnterpriseWithOneChief.json in Resources */ = {isa = PBXBuildFile; fileRef = E05EC6061C73EE1A0060063B /* ClassicEnterpriseWithOneChief.json */; };
 		E05EC6091C73F0E90060063B /* ClassicEnterpriseWithSeveralChiefs.json in Resources */ = {isa = PBXBuildFile; fileRef = E05EC6081C73F0E90060063B /* ClassicEnterpriseWithSeveralChiefs.json */; };
 		E05EC60B1C73F4600060063B /* ClassicEnterpriseWithNullChiefs.json in Resources */ = {isa = PBXBuildFile; fileRef = E05EC60A1C73F4600060063B /* ClassicEnterpriseWithNullChiefs.json */; };
@@ -79,8 +83,11 @@
 
 /* Begin PBXFileReference section */
 		1500FE9B2EDBF40355C0DBFF /* Pods-WAMappingTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WAMappingTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-WAMappingTests/Pods-WAMappingTests.release.xcconfig"; sourceTree = "<group>"; };
+		3C4EBD07F0E23F56D6B99144 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		60D6A43995776D00676D9BEE /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		6F6D6D7CF08AE087547BDF25 /* Pods-WAMappingTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WAMappingTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WAMappingTests/Pods-WAMappingTests.debug.xcconfig"; sourceTree = "<group>"; };
 		868B326C1D1BA06F5CF195FD /* libPods-WAMappingTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-WAMappingTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B0D050A9A09824A0CD594126 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		E006888A1C809CF4005DF30F /* WANSCodingStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WANSCodingStore.h; sourceTree = "<group>"; };
 		E006888B1C809CF4005DF30F /* WANSCodingStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WANSCodingStore.m; sourceTree = "<group>"; };
 		E01C1C491C7C9F1800FFEF06 /* NSArray+WAMergeableCollection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+WAMergeableCollection.h"; sourceTree = "<group>"; };
@@ -124,6 +131,11 @@
 		E01C1C711C7C9F1800FFEF06 /* WAStoreProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WAStoreProtocol.h; sourceTree = "<group>"; };
 		E01C1C881C7CA0D600FFEF06 /* WAMapping.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WAMapping.h; sourceTree = "<group>"; };
 		E01EA15A1C73D6FC0081461E /* ClassicEnterpriseWithOrderedEmployees.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = ClassicEnterpriseWithOrderedEmployees.json; sourceTree = "<group>"; };
+		E03BAC271C9B688E00006C89 /* Enterprises.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Enterprises.json; sourceTree = "<group>"; };
+		E03BAC291C9B711E00006C89 /* MyEnterprise.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyEnterprise.h; sourceTree = "<group>"; };
+		E03BAC2A1C9B711E00006C89 /* MyEnterprise.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyEnterprise.m; sourceTree = "<group>"; };
+		E03BAC2C1C9B712E00006C89 /* MyEmployee.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyEmployee.h; sourceTree = "<group>"; };
+		E03BAC2D1C9B712E00006C89 /* MyEmployee.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyEmployee.m; sourceTree = "<group>"; };
 		E05EC6061C73EE1A0060063B /* ClassicEnterpriseWithOneChief.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = ClassicEnterpriseWithOneChief.json; sourceTree = "<group>"; };
 		E05EC6081C73F0E90060063B /* ClassicEnterpriseWithSeveralChiefs.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = ClassicEnterpriseWithSeveralChiefs.json; sourceTree = "<group>"; };
 		E05EC60A1C73F4600060063B /* ClassicEnterpriseWithNullChiefs.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = ClassicEnterpriseWithNullChiefs.json; sourceTree = "<group>"; };
@@ -181,6 +193,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B9BB3A2F860C0AEFC99052C0 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -199,6 +212,7 @@
 			isa = PBXGroup;
 			children = (
 				868B326C1D1BA06F5CF195FD /* libPods-WAMappingTests.a */,
+				B0D050A9A09824A0CD594126 /* libPods.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -369,6 +383,11 @@
 				E0804C481C5945AE00EDA556 /* LaunchScreen.storyboard */,
 				E0804C4B1C5945AE00EDA556 /* Info.plist */,
 				E0804C3A1C5945AE00EDA556 /* Supporting Files */,
+				E03BAC271C9B688E00006C89 /* Enterprises.json */,
+				E03BAC291C9B711E00006C89 /* MyEnterprise.h */,
+				E03BAC2A1C9B711E00006C89 /* MyEnterprise.m */,
+				E03BAC2C1C9B712E00006C89 /* MyEmployee.h */,
+				E03BAC2D1C9B712E00006C89 /* MyEmployee.m */,
 			);
 			path = WAMapping;
 			sourceTree = "<group>";
@@ -397,6 +416,8 @@
 			children = (
 				6F6D6D7CF08AE087547BDF25 /* Pods-WAMappingTests.debug.xcconfig */,
 				1500FE9B2EDBF40355C0DBFF /* Pods-WAMappingTests.release.xcconfig */,
+				3C4EBD07F0E23F56D6B99144 /* Pods.debug.xcconfig */,
+				60D6A43995776D00676D9BEE /* Pods.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -408,9 +429,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = E0804C641C5945AE00EDA556 /* Build configuration list for PBXNativeTarget "WAMapping" */;
 			buildPhases = (
+				8F7DBD68A687649A362E2081 /* Check Pods Manifest.lock */,
 				E0804C331C5945AE00EDA556 /* Sources */,
 				E0804C341C5945AE00EDA556 /* Frameworks */,
 				E0804C351C5945AE00EDA556 /* Resources */,
+				6D28E9D6C2CBA0A439BB947C /* Embed Pods Frameworks */,
+				D66334C3509C3C15666DD41C /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -484,6 +508,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E03BAC281C9B688E00006C89 /* Enterprises.json in Resources */,
 				E0804C4A1C5945AE00EDA556 /* LaunchScreen.storyboard in Resources */,
 				E0804C471C5945AE00EDA556 /* Assets.xcassets in Resources */,
 				E0804C451C5945AE00EDA556 /* Main.storyboard in Resources */,
@@ -534,6 +559,51 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-WAMappingTests/Pods-WAMappingTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		6D28E9D6C2CBA0A439BB947C /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8F7DBD68A687649A362E2081 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		D66334C3509C3C15666DD41C /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		DF780CFB6ED65FCD57E70612 /* Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -576,6 +646,7 @@
 				E006888C1C809CF4005DF30F /* WANSCodingStore.m in Sources */,
 				E01C1C7A1C7C9F1800FFEF06 /* NSSet+WAMergeableCollection.m in Sources */,
 				E01C1C7E1C7C9F1800FFEF06 /* WAMapper.m in Sources */,
+				E03BAC2E1C9B712E00006C89 /* MyEmployee.m in Sources */,
 				E01C1C741C7C9F1800FFEF06 /* NSMutableDictionary+WASubDictionary.m in Sources */,
 				E01C1C841C7C9F1800FFEF06 /* WAReverseMapper.m in Sources */,
 				E01C1C761C7C9F1800FFEF06 /* NSMutableSet+WAMergeableCollection.m in Sources */,
@@ -592,6 +663,7 @@
 				E01C1C831C7C9F1800FFEF06 /* WARelationshipMapping.m in Sources */,
 				E01C1C781C7C9F1800FFEF06 /* NSObject+WASetValueIfChanged.m in Sources */,
 				E01C1C811C7C9F1800FFEF06 /* WAPropertyMapping.m in Sources */,
+				E03BAC2B1C9B711E00006C89 /* MyEnterprise.m in Sources */,
 				E0804C3C1C5945AE00EDA556 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -728,6 +800,7 @@
 		};
 		E0804C651C5945AE00EDA556 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3C4EBD07F0E23F56D6B99144 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = WAMapping/Info.plist;
@@ -739,6 +812,7 @@
 		};
 		E0804C661C5945AE00EDA556 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 60D6A43995776D00676D9BEE /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = WAMapping/Info.plist;

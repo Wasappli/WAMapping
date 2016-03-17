@@ -12,12 +12,15 @@
 @class WAEntityMapping;
 @protocol WAStoreProtocol;
 
-typedef void (^WAMapperCompletionBlock)(NSArray *mappedObjects);
+typedef void (^WAMapperProgressBlock)(NSProgress *progress);
+typedef void (^WAMapperCompletionBlock)(NSArray *mappedObjects, NSError *error);
 
 /**
  This class will transform a dictionary representation to an object
+ It supports NSProgress with cancellation (but no pausing). Be aware that according to Apple Documentation about `NSProgressReporting`, "Objects that adopt this protocol should typically be "one-shot""
+ This means that you should allocate one mapper per mapping execution
 */
-@interface WAMapper : NSObject
+@interface WAMapper : NSObject <NSProgressReporting>
 
 - (instancetype)init NS_UNAVAILABLE;
 + (instancetype)new NS_UNAVAILABLE;

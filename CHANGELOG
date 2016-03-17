@@ -1,11 +1,45 @@
-## 0.0.3 - Released Feb 29, 2015
+## 0.0.4 - Released Mar 17, 2016
+- Added `NSProgress` support
+You can track progress using
+```objc
+[mapper.progress addObserver:self
+                  forKeyPath:NSStringFromSelector(@selector(fractionCompleted))
+                     options:NSKeyValueObservingOptionNew
+                     context:NULL];
+```
+
+```objc
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSString *,id> *)change context:(void *)context {
+    if ([keyPath isEqualToString:NSStringFromSelector(@selector(fractionCompleted))] && [object isKindOfClass:[NSProgress class]]) {
+        NSLog(@"Mapping progress = %f", [change[@"new"] doubleValue]);
+    } else {
+        [super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
+    }
+}
+```
+
+It also supports cancellation
+
+```objc
+dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
+    [mapper mapFromRepresentation:JSON mapping:employeeMapping completion:^(NSArray *mappedObjects, NSError *error) {
+        NSLog(@"Mapped objects %@ - Error %@", mappedObjects, error);
+    }];
+});
+
+[mapper.progress cancel];
+```
+
+- Added a basic sample on view controller
+
+## 0.0.3 - Released Feb 29, 2016
 - Added `WANSCodingStore` to the main header
 - Added a way to register default mapping block for specific classes.
 For example, you can now add a default mapping block to turn `strings` to `NSDate`
 
-## 0.0.2 - Released Feb 26, 2015
+## 0.0.2 - Released Feb 26, 2016
 - Exposed the store on WAMapper
 - Added a new store: `WANSCodingStore`
 
-## 0.0.1 - Released Feb 23, 2015
+## 0.0.1 - Released Feb 23, 2016
 Initial release

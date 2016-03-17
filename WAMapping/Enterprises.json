@@ -1,0 +1,43 @@
+ [{
+  "id": 1,
+  "name": "Wasappli",
+  "creation_date": "2013-10-01",
+  "address": {
+		"street_number": 5149
+  },
+  "employees": [{
+                "id": 1,
+                "first_name": "Marian"
+                }, {
+                "id": 4,
+                "first_name": "Jérémy"
+                }, {
+                "id": 2,
+                "first_name": "Arnaud"
+                }]
+  }, {
+  "id": 2,
+  "name": "Potloc",
+  "creation_date": "2013-10-01",
+  "address": {
+		"street_number": 5149
+  },
+  "employees": [{
+                "id": 5,
+                "first_name": "Louis"
+                }, {
+                "id": 6,
+                "first_name": "Rodolphe"
+                }]
+  }, {
+  "id": 3,
+  "name": "Chez Roger et Denise",
+  "creation_date": "2013-10-01",
+  "address": {
+		"street_number": 5149
+  },
+  "employees": [{
+                "id": 7,
+                "first_name": "Nabil"
+                }]
+  }]

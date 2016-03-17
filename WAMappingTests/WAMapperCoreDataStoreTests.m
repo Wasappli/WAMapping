@@ -113,7 +113,7 @@ id(^toDateMappingBlock)(id ) = ^id(id value) {
                                                          error:nil];
 [mapper mapFromRepresentation:json
                       mapping:enterpriseMapping
-                   completion:^(NSArray *mappedObjects) {
+                   completion:^(NSArray *mappedObjects, NSError *error) {
                        enterprise = [mappedObjects firstObject];
                    }];
                 
@@ -142,7 +142,7 @@ id(^toDateMappingBlock)(id ) = ^id(id value) {
                                                             error:nil];
                 [mapper mapFromRepresentation:json
                                       mapping:enterpriseMapping
-                                   completion:^(NSArray *mappedObjects) {
+                                   completion:^(NSArray *mappedObjects, NSError *error) {
                                        enterprise1 = [mappedObjects firstObject];
                                    }];
                 
@@ -153,7 +153,7 @@ id(^toDateMappingBlock)(id ) = ^id(id value) {
                                                          error:nil];
                 [mapper mapFromRepresentation:json
                                       mapping:enterpriseMapping
-                                   completion:^(NSArray *mappedObjects) {
+                                   completion:^(NSArray *mappedObjects, NSError *error) {
                                        enterprise2 = [mappedObjects firstObject];
                                    }];
                 
@@ -181,7 +181,7 @@ id(^toDateMappingBlock)(id ) = ^id(id value) {
                                                             error:nil];
                 [mapper mapFromRepresentation:json
                                       mapping:enterpriseMapping
-                                   completion:^(NSArray *mappedObjects) {
+                                   completion:^(NSArray *mappedObjects, NSError *error) {
                                        enterprise1 = [mappedObjects firstObject];
                                    }];
                 
@@ -192,7 +192,7 @@ id(^toDateMappingBlock)(id ) = ^id(id value) {
                                                          error:nil];
                 [mapper mapFromRepresentation:json
                                       mapping:enterpriseMapping
-                                   completion:^(NSArray *mappedObjects) {
+                                   completion:^(NSArray *mappedObjects, NSError *error) {
                                        enterprise2 = [mappedObjects firstObject];
                                    }];
                 
@@ -219,7 +219,7 @@ id(^toDateMappingBlock)(id ) = ^id(id value) {
                                                             error:nil];
                 [mapper mapFromRepresentation:json
                                       mapping:enterpriseMapping
-                                   completion:^(NSArray *mappedObjects) {
+                                   completion:^(NSArray *mappedObjects, NSError *error) {
                                        enterprise = [mappedObjects firstObject];
                                    }];
             });
@@ -245,7 +245,7 @@ id(^toDateMappingBlock)(id ) = ^id(id value) {
                                                             error:nil];
                 [mapper mapFromRepresentation:json
                                       mapping:enterpriseMapping
-                                   completion:^(NSArray *mappedObjects) {
+                                   completion:^(NSArray *mappedObjects, NSError *error) {
                                        enterprise = [mappedObjects firstObject];
                                    }];
             });
@@ -277,10 +277,10 @@ id(^toDateMappingBlock)(id ) = ^id(id value) {
                                                             error:nil];
                 [mapper mapFromRepresentation:json[@"employees"]
                                       mapping:employeeMapping
-                                   completion:^(NSArray *mappedObjects) {
+                                   completion:^(NSArray *mappedObjects, NSError *error) {
                                        [mapper mapFromRepresentation:json[@"enterprise"]
                                                              mapping:enterpriseMapping
-                                                          completion:^(NSArray *mappedObjects) {
+                                                          completion:^(NSArray *mappedObjects, NSError *error) {
                                                               enterprise = [mappedObjects firstObject];
                                                           }];
                                    }];
@@ -312,10 +312,10 @@ id(^toDateMappingBlock)(id ) = ^id(id value) {
                                                             error:nil];
                 [mapper mapFromRepresentation:json[@"employees"]
                                       mapping:employeeMapping
-                                   completion:^(NSArray *mappedObjects) {
+                                   completion:^(NSArray *mappedObjects, NSError *error) {
                                        [mapper mapFromRepresentation:json[@"enterprise"]
                                                              mapping:enterpriseMapping
-                                                          completion:^(NSArray *mappedObjects) {
+                                                          completion:^(NSArray *mappedObjects, NSError *error) {
                                                               enterprise = [mappedObjects firstObject];
                                                           }];
                                    }];
@@ -348,10 +348,10 @@ id(^toDateMappingBlock)(id ) = ^id(id value) {
                                                             error:nil];
                 [mapper mapFromRepresentation:json[@"employees"]
                                       mapping:employeeMapping
-                                   completion:^(NSArray *mappedObjects) {
+                                   completion:^(NSArray *mappedObjects, NSError *error) {
                                        [mapper mapFromRepresentation:json[@"enterprise"]
                                                              mapping:enterpriseMapping
-                                                          completion:^(NSArray *mappedObjects) {
+                                                          completion:^(NSArray *mappedObjects, NSError *error) {
                                                               enterprise = [mappedObjects firstObject];
                                                           }];
                                    }];
@@ -378,10 +378,10 @@ id(^toDateMappingBlock)(id ) = ^id(id value) {
                                                             error:nil];
                 [mapper mapFromRepresentation:json[@"employees"]
                                       mapping:employeeMapping
-                                   completion:^(NSArray *mappedObjects) {
+                                   completion:^(NSArray *mappedObjects, NSError *error) {
                                        [mapper mapFromRepresentation:json[@"enterprise"]
                                                              mapping:enterpriseMapping
-                                                          completion:^(NSArray *mappedObjects) {
+                                                          completion:^(NSArray *mappedObjects, NSError *error) {
                                                               enterprise = [mappedObjects firstObject];
                                                           }];
                                    }];
@@ -408,7 +408,7 @@ id(^toDateMappingBlock)(id ) = ^id(id value) {
                                                             error:nil];
                 [mapper mapFromRepresentation:json
                                       mapping:employeeMapping
-                                   completion:^(NSArray *mappedObjects) {
+                                   completion:^(NSArray *mappedObjects, NSError *error) {
                                        employee = [mappedObjects firstObject];
                                    }];
             });
@@ -441,7 +441,7 @@ id(^toDateMappingBlock)(id ) = ^id(id value) {
                                                          error:nil];
                 [mapper mapFromRepresentation:json
                                       mapping:enterpriseMapping
-                                   completion:^(NSArray *mappedObjects) {
+                                   completion:^(NSArray *mappedObjects, NSError *error) {
                                        enterprise = [mappedObjects firstObject];
                                    }];
                 
@@ -475,7 +475,7 @@ id(^toDateMappingBlock)(id ) = ^id(id value) {
                                                             error:nil];
                 [mapper mapFromRepresentation:json
                                       mapping:enterpriseMapping
-                                   completion:^(NSArray *mappedObjects) {
+                                   completion:^(NSArray *mappedObjects, NSError *error) {
                                        enterprise1 = [mappedObjects firstObject];
                                    }];
                 
@@ -486,7 +486,7 @@ id(^toDateMappingBlock)(id ) = ^id(id value) {
                                                          error:nil];
                 [mapper mapFromRepresentation:json
                                       mapping:enterpriseMapping
-                                   completion:^(NSArray *mappedObjects) {
+                                   completion:^(NSArray *mappedObjects, NSError *error) {
                                        enterprise2 = [mappedObjects firstObject];
                                    }];
                 
@@ -514,7 +514,7 @@ id(^toDateMappingBlock)(id ) = ^id(id value) {
                                                             error:nil];
                 [mapper mapFromRepresentation:json
                                       mapping:enterpriseMapping
-                                   completion:^(NSArray *mappedObjects) {
+                                   completion:^(NSArray *mappedObjects, NSError *error) {
                                        enterprise1 = [mappedObjects firstObject];
                                    }];
                 
@@ -525,7 +525,7 @@ id(^toDateMappingBlock)(id ) = ^id(id value) {
                                                          error:nil];
                 [mapper mapFromRepresentation:json
                                       mapping:enterpriseMapping
-                                   completion:^(NSArray *mappedObjects) {
+                                   completion:^(NSArray *mappedObjects, NSError *error) {
                                        enterprise2 = [mappedObjects firstObject];
                                    }];
                 
@@ -555,7 +555,7 @@ id(^toDateMappingBlock)(id ) = ^id(id value) {
                                                             error:nil];
                 [mapper mapFromRepresentation:json
                                       mapping:enterpriseMapping
-                                   completion:^(NSArray *mappedObjects) {
+                                   completion:^(NSArray *mappedObjects, NSError *error) {
                                        enterprise1 = [mappedObjects firstObject];
                                    }];
                 
@@ -566,7 +566,7 @@ id(^toDateMappingBlock)(id ) = ^id(id value) {
                                                          error:nil];
                 [mapper mapFromRepresentation:json
                                       mapping:enterpriseMapping
-                                   completion:^(NSArray *mappedObjects) {
+                                   completion:^(NSArray *mappedObjects, NSError *error) {
                                        enterprise2 = [mappedObjects firstObject];
                                    }];
 
@@ -583,7 +583,7 @@ id(^toDateMappingBlock)(id ) = ^id(id value) {
                 
                 [mapper mapFromRepresentation:json
                                       mapping:enterpriseMapping
-                                   completion:^(NSArray *mappedObjects) {
+                                   completion:^(NSArray *mappedObjects, NSError *error) {
                                        enterprise2 = [mappedObjects firstObject];
                                    }];
                 
@@ -598,7 +598,7 @@ id(^toDateMappingBlock)(id ) = ^id(id value) {
 
                 [mapper mapFromRepresentation:json
                                       mapping:enterpriseMapping
-                                   completion:^(NSArray *mappedObjects) {
+                                   completion:^(NSArray *mappedObjects, NSError *error) {
                                        enterprise2 = [mappedObjects firstObject];
                                    }];
                 
@@ -622,7 +622,7 @@ id(^toDateMappingBlock)(id ) = ^id(id value) {
                                                             error:nil];
                 [mapper mapFromRepresentation:json
                                       mapping:enterpriseMapping
-                                   completion:^(NSArray *mappedObjects) {
+                                   completion:^(NSArray *mappedObjects, NSError *error) {
                                        enterprise1 = [mappedObjects firstObject];
                                    }];
                 
@@ -633,7 +633,7 @@ id(^toDateMappingBlock)(id ) = ^id(id value) {
                                                          error:nil];
                 [mapper mapFromRepresentation:json
                                       mapping:enterpriseMapping
-                                   completion:^(NSArray *mappedObjects) {
+                                   completion:^(NSArray *mappedObjects, NSError *error) {
                                        enterprise2 = [mappedObjects firstObject];
                                    }];
                 
@@ -650,7 +650,7 @@ id(^toDateMappingBlock)(id ) = ^id(id value) {
                 
                 [mapper mapFromRepresentation:json
                                       mapping:enterpriseMapping
-                                   completion:^(NSArray *mappedObjects) {
+                                   completion:^(NSArray *mappedObjects, NSError *error) {
                                        enterprise2 = [mappedObjects firstObject];
                                    }];
                 
@@ -665,7 +665,7 @@ id(^toDateMappingBlock)(id ) = ^id(id value) {
                 
                 [mapper mapFromRepresentation:json
                                       mapping:enterpriseMapping
-                                   completion:^(NSArray *mappedObjects) {
+                                   completion:^(NSArray *mappedObjects, NSError *error) {
                                        enterprise2 = [mappedObjects firstObject];
                                    }];
                 
@@ -688,7 +688,7 @@ id(^toDateMappingBlock)(id ) = ^id(id value) {
                                                             error:nil];
                 [mapper mapFromRepresentation:json
                                       mapping:employeeMapping
-                                   completion:^(NSArray *mappedObjects) {
+                                   completion:^(NSArray *mappedObjects, NSError *error) {
                                        employee = [mappedObjects firstObject];
                                    }];
 
@@ -707,7 +707,7 @@ id(^toDateMappingBlock)(id ) = ^id(id value) {
                 
                 [mapper mapFromRepresentation:json
                                       mapping:employeeMapping
-                                   completion:^(NSArray *mappedObjects) {
+                                   completion:^(NSArray *mappedObjects, NSError *error) {
                                        employee = [mappedObjects firstObject];
                                    }];
                 
@@ -723,7 +723,7 @@ id(^toDateMappingBlock)(id ) = ^id(id value) {
                 
                 [mapper mapFromRepresentation:json
                                       mapping:employeeMapping
-                                   completion:^(NSArray *mappedObjects) {
+                                   completion:^(NSArray *mappedObjects, NSError *error) {
                                        employee = [mappedObjects firstObject];
                                    }];
                 
@@ -738,7 +738,7 @@ id(^toDateMappingBlock)(id ) = ^id(id value) {
                 
                 [mapper mapFromRepresentation:json
                                       mapping:employeeMapping
-                                   completion:^(NSArray *mappedObjects) {
+                                   completion:^(NSArray *mappedObjects, NSError *error) {
                                        employee = [mappedObjects firstObject];
                                    }];
                 
@@ -761,7 +761,7 @@ id(^toDateMappingBlock)(id ) = ^id(id value) {
                                                             error:nil];
                 [mapper mapFromRepresentation:json
                                       mapping:employeeMapping
-                                   completion:^(NSArray *mappedObjects) {
+                                   completion:^(NSArray *mappedObjects, NSError *error) {
                                        employee = [mappedObjects firstObject];
                                    }];
                 
@@ -780,7 +780,7 @@ id(^toDateMappingBlock)(id ) = ^id(id value) {
                 
                 [mapper mapFromRepresentation:json
                                       mapping:employeeMapping
-                                   completion:^(NSArray *mappedObjects) {
+                                   completion:^(NSArray *mappedObjects, NSError *error) {
                                        employee = [mappedObjects firstObject];
                                    }];
                 
@@ -796,7 +796,7 @@ id(^toDateMappingBlock)(id ) = ^id(id value) {
                 
                 [mapper mapFromRepresentation:json
                                       mapping:employeeMapping
-                                   completion:^(NSArray *mappedObjects) {
+                                   completion:^(NSArray *mappedObjects, NSError *error) {
                                        employee = [mappedObjects firstObject];
                                    }];
                 
@@ -811,7 +811,7 @@ id(^toDateMappingBlock)(id ) = ^id(id value) {
                 
                 [mapper mapFromRepresentation:json
                                       mapping:employeeMapping
-                                   completion:^(NSArray *mappedObjects) {
+                                   completion:^(NSArray *mappedObjects, NSError *error) {
                                        employee = [mappedObjects firstObject];
                                    }];
                 

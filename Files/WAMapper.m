@@ -27,13 +27,18 @@
 @end
 
 @implementation WAMapper
+@synthesize progress = _progress;
 
 - (instancetype)initWithStore:(id<WAStoreProtocol>)store {
     WAMProtocolClassAssert(store, WAStoreProtocol);
     
     self = [super init];
     if (self) {
-        self.store = store;
+        self->_store = store;
+        
+        self->_progress             = [NSProgress progressWithTotalUnitCount:-1];
+        self->_progress.cancellable = YES;
+        self->_progress.pausable    = NO;
     }
     
     return self;
@@ -46,14 +51,20 @@
 - (void)mapFromRepresentation:(id)json mapping:(WAEntityMapping *)mapping completion:(WAMapperCompletionBlock)completion {
     WAMParameterAssert(completion);
     WAMAssert(self.store, @"You need to setup a store");
+    NSArray *objects = [self _arrayFromRepresentation:json mapping:mapping];
+    
+    self->_progress.totalUnitCount = 2 /* store begin and commit transaction */ + [objects count];
     
     [self.store beginTransaction];
-
-    NSArray *mappedObjects = [self _mapFromRepresentation:json mapping:mapping];
+    self->_progress.completedUnitCount++;
+    
+    NSError *error = nil;
+    NSArray *mappedObjects = [self _mapFromArray:objects mapping:mapping updateProgress:YES error:&error];
     
     [self.store commitTransaction];
+    self->_progress.completedUnitCount++;
     
-    completion(mappedObjects);
+    completion(mappedObjects, error);
 }
 
 - (void)addDefaultMappingBlock:(WAMappingBlock)mappingBlock forDestinationClass:(Class)destinationClass {
@@ -69,8 +80,7 @@
 
 #pragma mark - Private methods
 
-- (NSArray *)_mapFromRepresentation:(id)json mapping:(WAEntityMapping *)mapping {
-    
+- (NSArray *)_arrayFromRepresentation:(id)json mapping:(WAEntityMapping *)mapping {
     NSArray *resolvedArray = nil;
     if ([json isKindOfClass:[NSArray class]] && [[json firstObject] isKindOfClass:[NSDictionary class]]) {
         resolvedArray = json;
@@ -87,13 +97,20 @@
         } else {
             resolvedArray = @[@{mapping.inverseIdentificationAttribute: json}];
         }
-    } else {
+    }
+    
+    return resolvedArray;
+}
+
+- (NSArray *)_mapFromArray:(NSArray *)objectsArray mapping:(WAEntityMapping *)mapping updateProgress:(BOOL)updateProgress error:(NSError **)error {
+    
+    if (!objectsArray) {
         return nil;
     }
     
     // Grab the attributes values
     NSMutableArray *objectsIdentificationAttributes = [NSMutableArray array];
-    for (id representation in resolvedArray) {
+    for (id representation in objectsArray) {
         id object = nil;
         if ([representation isKindOfClass:[NSDictionary class]] && mapping.inverseAttributeMappings) {
             object = representation[mapping.inverseIdentificationAttribute];
@@ -132,8 +149,18 @@
     NSMutableArray *objectsMapped = [NSMutableArray new];
     
     // Go through all objects in json
-    for (NSDictionary *dic in resolvedArray) {
+    for (NSDictionary *dic in objectsArray) {
         // Get the object if existing
+        if (self->_progress.isCancelled) {
+            if (error) {
+                *error = [NSError errorWithDomain:NSCocoaErrorDomain
+                                             code:NSUserCancelledError
+                                         userInfo:nil];
+            }
+            
+            break;
+        }
+        
         id inverseAttribute = mapping.inverseIdentificationAttribute;
         id sourceIDValue = nil;
         if (inverseAttribute) {
@@ -156,8 +183,11 @@
         
         [objectsMapped addObject:objectToApplyMappingOn];
         [objectsMapped addObjectsFromArray:relationShipObjects];
+        
+        if (updateProgress) {
+            self->_progress.completedUnitCount++;
+        }
     }
-    
     
     return [objectsMapped copy];
 }
@@ -238,8 +268,11 @@
         
         id finalObjects = nil;
         if (finalValue) {
-            NSArray *mappedObjects = [self _mapFromRepresentation:finalValue
-                                                          mapping:relationShipMapping.mapping];
+            // We do not update progress on childs. We could thought, but it involves add child behaviour on NSProgress which is far easier on iOS 9+
+            NSArray *mappedObjects = [self _mapFromArray:[self _arrayFromRepresentation:value mapping:relationShipMapping.mapping]
+                                                 mapping:relationShipMapping.mapping
+                                          updateProgress:NO
+                                                   error:nil];
             
             [relationShipObjects addObjectsFromArray:mappedObjects];
             
