@@ -22,12 +22,13 @@
 @interface WAMapper ()
 
 @property (nonatomic, strong) id <WAStoreProtocol> store;
+@property (strong) NSProgress *progress;
+
 @property (nonatomic, strong) NSMutableDictionary *defaultMappingBlocks;
 
 @end
 
 @implementation WAMapper
-@synthesize progress = _progress;
 
 - (instancetype)initWithStore:(id<WAStoreProtocol>)store {
     WAMProtocolClassAssert(store, WAStoreProtocol);
@@ -36,7 +37,11 @@
     if (self) {
         self->_store = store;
         
-        self->_progress             = [NSProgress progressWithTotalUnitCount:-1];
+        if ([NSProgress respondsToSelector:NSSelectorFromString(@"discreteProgressWithTotalUnitCount:")]) {
+            self->_progress = [NSProgress discreteProgressWithTotalUnitCount:-1];
+        } else {
+            self->_progress = [NSProgress progressWithTotalUnitCount:-1];
+        }
         self->_progress.cancellable = YES;
         self->_progress.pausable    = NO;
     }
@@ -53,16 +58,16 @@
     WAMAssert(self.store, @"You need to setup a store");
     NSArray *objects = [self _arrayFromRepresentation:json mapping:mapping];
     
-    self->_progress.totalUnitCount = 2 /* store begin and commit transaction */ + [objects count];
+    self.progress.totalUnitCount = 2 /* store begin and commit transaction */ + [objects count];
     
     [self.store beginTransaction];
-    self->_progress.completedUnitCount++;
+    self.progress.completedUnitCount++;
     
     NSError *error = nil;
     NSArray *mappedObjects = [self _mapFromArray:objects mapping:mapping updateProgress:YES error:&error];
     
     [self.store commitTransaction];
-    self->_progress.completedUnitCount++;
+    self.progress.completedUnitCount++;
     
     completion(mappedObjects, error);
 }
@@ -151,7 +156,7 @@
     // Go through all objects in json
     for (NSDictionary *dic in objectsArray) {
         // Get the object if existing
-        if (self->_progress.isCancelled) {
+        if (self.progress.isCancelled) {
             if (error) {
                 *error = [NSError errorWithDomain:NSCocoaErrorDomain
                                              code:NSUserCancelledError
@@ -185,7 +190,7 @@
         [objectsMapped addObjectsFromArray:relationShipObjects];
         
         if (updateProgress) {
-            self->_progress.completedUnitCount++;
+            self.progress.completedUnitCount++;
         }
     }
     

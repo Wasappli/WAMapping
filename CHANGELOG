@@ -1,3 +1,6 @@
+## 0.0.5 - Released Mar 17, 2016
+Fixed support for iOS 9-
+
 ## 0.0.4 - Released Mar 17, 2016
 - Added `NSProgress` support
 You can track progress using

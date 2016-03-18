@@ -18,6 +18,8 @@
 
 @interface WAReverseMapper ()
 
+@property (strong) NSProgress *progress;
+
 @property (nonatomic, strong) NSMutableDictionary *defaultReverseMappingBlocks;
 
 @end
@@ -28,7 +30,11 @@
 - (instancetype)init {
     self = [super init];
     if (self) {
-        self->_progress             = [NSProgress progressWithTotalUnitCount:-1];
+        if ([NSProgress respondsToSelector:NSSelectorFromString(@"discreteProgressWithTotalUnitCount:")]) {
+            self->_progress = [NSProgress discreteProgressWithTotalUnitCount:-1];
+        } else {
+            self->_progress = [NSProgress progressWithTotalUnitCount:-1];
+        }
         self->_progress.cancellable = YES;
         self->_progress.pausable    = NO;
     }
@@ -52,14 +58,14 @@
         return nil;
     }
     
-    self->_progress.totalUnitCount = [objects count];
+    self.progress.totalUnitCount = [objects count];
     
     NSMutableArray *allObjectsAsDictionaries = [NSMutableArray array];
     // We use this dictionary to avoid infinite loops
     NSMutableDictionary *alreadyMappedObjects = [NSMutableDictionary dictionary];
     
     for (id obj in objects) {
-        if (self->_progress.isCancelled) {
+        if (self.progress.isCancelled) {
             if (error) {
                 *error = [NSError errorWithDomain:NSCocoaErrorDomain
                                                  code:NSUserCancelledError
@@ -77,7 +83,7 @@
             [allObjectsAsDictionaries addObject:objectAsDictionary];
         }
         
-        self->_progress.completedUnitCount++;
+        self.progress.completedUnitCount++;
     }
     
     return [allObjectsAsDictionaries copy];

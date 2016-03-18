@@ -17,10 +17,10 @@ typedef void (^WAMapperCompletionBlock)(NSArray *mappedObjects, NSError *error);
 
 /**
  This class will transform a dictionary representation to an object
- It supports NSProgress with cancellation (but no pausing). Be aware that according to Apple Documentation about `NSProgressReporting`, "Objects that adopt this protocol should typically be "one-shot""
+ It supports NSProgress with cancellation (but no pausing). The class mimics `NSProgressReporting` available from iOS 9. Be aware that according to Apple Documentation about `NSProgressReporting`, "Objects that adopt this protocol should typically be "one-shot"". This principle applies here as well.
  This means that you should allocate one mapper per mapping execution
 */
-@interface WAMapper : NSObject <NSProgressReporting>
+@interface WAMapper : NSObject
 
 - (instancetype)init NS_UNAVAILABLE;
 + (instancetype)new NS_UNAVAILABLE;
@@ -57,5 +57,7 @@ typedef void (^WAMapperCompletionBlock)(NSArray *mappedObjects, NSError *error);
 - (void)addDefaultMappingBlock:(WAMappingBlock)mappingBlock forDestinationClass:(Class)destinationClass;
 
 @property (nonatomic, strong, readonly) id <WAStoreProtocol> store;
+
+@property (strong, readonly) NSProgress *progress;
 
 @end

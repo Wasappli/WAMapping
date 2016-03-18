@@ -247,10 +247,10 @@ id(^toDateMappingBlock)(id ) = ^id(id value) {
 The same thing happens to the reverse mapper. Note that if you provide a custom mapping on an `NSDate` object for a specific property (like a date with only the year), you can add the property to the entity mapping which will override the default behavior for this specific property.
 
 # Progress and cancellation
-Both `WAMapper` and `WAReverseMapper` support `NSProgress` by implementing `NSProgressReporting` protocol. Note that Apple explicitely says `Objects that adopt this protocol should typically be "one-shot"` which means you should use one `WAMapper` per map operation.
+Both `WAMapper` and `WAReverseMapper` support `NSProgress`. Note that Apple explicitely says in their documentation about `NSProgressReporting` (which we are mimicing here) `Objects that adopt this protocol should typically be "one-shot"` which means you should use one `WAMapper` per map operation.
 
 ## Progress
-You can track the progress using this little piece of code. Note that the progress counts the main top objects mapped (if your array contains one object with a thousand objects as relationship, the progress will not reflect the thousand subobjects mapped). This is per `NSProgress` class which supports child progress only from iOS 9.
+You can track the progress using this little piece of code. Note that the progress counts the main top objects mapped (if your array contains one object with a thousand objects as relationship, the progress will not reflect the thousand subobjects mapped). This is per choice because adopting child progress prior to iOS 9 is not great.
 
 ```objc
 [mapper.progress addObserver:self

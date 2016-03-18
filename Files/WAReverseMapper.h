@@ -15,10 +15,9 @@ typedef BOOL (^WAReverseMapperShouldMapRelationshipBlock)(NSString *sourceRelati
 
 /**
  *  This class performs a reverse mapper by turning objects back into dictionaries
- *  It supports NSProgress with cancellation (but no pausing). Be aware that according to Apple Documentation about `NSProgressReporting`, "Objects that adopt this protocol should typically be "one-shot""
- *  This means that you should allocate one reversemapper per execution
+ *  It supports NSProgress with cancellation (but no pausing). The class mimics `NSProgressReporting` available from iOS 9. Be aware that according to Apple Documentation about `NSProgressReporting`, "Objects that adopt this protocol should typically be "one-shot"". This principle applies here as well. This means that you should allocate one reversemapper per mapping execution
  */
-@interface WAReverseMapper : NSObject <NSProgressReporting>
+@interface WAReverseMapper : NSObject
 
 /**
  *  Turns objects into a dictionary
@@ -38,5 +37,7 @@ typedef BOOL (^WAReverseMapperShouldMapRelationshipBlock)(NSString *sourceRelati
  *  @param destinationClass    the destination class
  */
 - (void)addReverseDefaultMappingBlock:(WAMappingBlock)reverseMappingBlock forDestinationClass:(Class)destinationClass;
+
+@property (strong, readonly) NSProgress *progress;
 
 @end
