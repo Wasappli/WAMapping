@@ -1,3 +1,7 @@
+## 0.0.6 - Released Mar 21, 2016
+Fixed issues with relation ships when relation ship objects also have relation ship.
+When you are mapping one object type from representation, you only get the array of those objects on first hierarchy level. Previously, you'd get every objects mapped in the process.
+
 ## 0.0.5 - Released Mar 17, 2016
 Fixed support for iOS 9-
 

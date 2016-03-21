@@ -1,0 +1,25 @@
+{
+    "id": 1,
+    "first_name": "Marian",
+    "enterprise": {
+        "id": 1,
+        "name": "Wasappli",
+        "creation_date": "2013-10-01",
+        "address": {
+            "street_number": 5149
+        },
+        "offices": [{
+                    "id": 1,
+                    "advisor": {
+                    "id": 2,
+                    "first_name": "Advisor 1"
+                    }
+                    }, {
+                    "id": 2,
+                    "advisor": {
+                    "id": 3,
+                    "first_name": "Advisor 2"
+                    }
+                    }]
+    }
+}

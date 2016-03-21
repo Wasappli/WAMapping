@@ -17,5 +17,6 @@
 @property (nonatomic, strong) NSArray *employees;
 @property (nonatomic, strong) NSOrderedSet *orderedEmployees;
 @property (nonatomic, strong) NSArray *chiefs;
+@property (nonatomic, strong) NSArray *offices;
 
 @end

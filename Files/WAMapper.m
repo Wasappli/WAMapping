@@ -182,12 +182,11 @@
             objectToApplyMappingOn = [self.store newObjectForMapping:mapping];
         }
         
-        NSArray *relationShipObjects = [self _applyMapping:mapping
-                                                  onObject:objectToApplyMappingOn
-                                        withRepresentation:dic];
+        [self _applyMapping:mapping
+                   onObject:objectToApplyMappingOn
+         withRepresentation:dic];
         
         [objectsMapped addObject:objectToApplyMappingOn];
-        [objectsMapped addObjectsFromArray:relationShipObjects];
         
         if (updateProgress) {
             self.progress.completedUnitCount++;
@@ -197,7 +196,7 @@
     return [objectsMapped copy];
 }
 
-- (NSArray *)_applyMapping:(WAEntityMapping *)mapping onObject:(id)object withRepresentation:(NSDictionary *)representation {
+- (void)_applyMapping:(WAEntityMapping *)mapping onObject:(id)object withRepresentation:(NSDictionary *)representation {
     
     // Map values
     for (NSString *key in [mapping.attributeMappings allKeys]) {
@@ -242,8 +241,6 @@
         }
     }
     
-    NSMutableArray *relationShipObjects = [NSMutableArray array];
-    
     // Map relationships
     for (WARelationshipMapping *relationShipMapping in mapping.relationshipMappings) {
         
@@ -278,9 +275,7 @@
                                                  mapping:relationShipMapping.mapping
                                           updateProgress:NO
                                                    error:nil];
-            
-            [relationShipObjects addObjectsFromArray:mappedObjects];
-            
+
             finalObjects = [WAPropertyTransformation propertyValue:mappedObjects
                                                   fromPropertyName:relationShipMapping.destinationProperty
                                                          forObject:object];
@@ -342,8 +337,6 @@
         [object wa_setValueIfChanged:finalObjects
                               forKey:relationShipMapping.destinationProperty];
     }
-    
-    return [relationShipObjects copy];
 }
 
 - (WAMappingBlock)_defaultMappingBlockForDestinationClass:(Class)destinationClass {

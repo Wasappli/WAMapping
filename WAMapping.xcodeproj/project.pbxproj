@@ -32,6 +32,8 @@
 		E03BAC281C9B688E00006C89 /* Enterprises.json in Resources */ = {isa = PBXBuildFile; fileRef = E03BAC271C9B688E00006C89 /* Enterprises.json */; };
 		E03BAC2B1C9B711E00006C89 /* MyEnterprise.m in Sources */ = {isa = PBXBuildFile; fileRef = E03BAC2A1C9B711E00006C89 /* MyEnterprise.m */; };
 		E03BAC2E1C9B712E00006C89 /* MyEmployee.m in Sources */ = {isa = PBXBuildFile; fileRef = E03BAC2D1C9B712E00006C89 /* MyEmployee.m */; };
+		E04C8E301CA07D5C00D51D2C /* Office.m in Sources */ = {isa = PBXBuildFile; fileRef = E04C8E2F1CA07D5C00D51D2C /* Office.m */; };
+		E04C8E321CA07E0600D51D2C /* ClassEmployeeWithEnterpriseAndOffices.json in Resources */ = {isa = PBXBuildFile; fileRef = E04C8E311CA07E0600D51D2C /* ClassEmployeeWithEnterpriseAndOffices.json */; };
 		E05EC6071C73EE1A0060063B /* ClassicEnterpriseWithOneChief.json in Resources */ = {isa = PBXBuildFile; fileRef = E05EC6061C73EE1A0060063B /* ClassicEnterpriseWithOneChief.json */; };
 		E05EC6091C73F0E90060063B /* ClassicEnterpriseWithSeveralChiefs.json in Resources */ = {isa = PBXBuildFile; fileRef = E05EC6081C73F0E90060063B /* ClassicEnterpriseWithSeveralChiefs.json */; };
 		E05EC60B1C73F4600060063B /* ClassicEnterpriseWithNullChiefs.json in Resources */ = {isa = PBXBuildFile; fileRef = E05EC60A1C73F4600060063B /* ClassicEnterpriseWithNullChiefs.json */; };
@@ -136,6 +138,9 @@
 		E03BAC2A1C9B711E00006C89 /* MyEnterprise.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyEnterprise.m; sourceTree = "<group>"; };
 		E03BAC2C1C9B712E00006C89 /* MyEmployee.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyEmployee.h; sourceTree = "<group>"; };
 		E03BAC2D1C9B712E00006C89 /* MyEmployee.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyEmployee.m; sourceTree = "<group>"; };
+		E04C8E2E1CA07D5C00D51D2C /* Office.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Office.h; sourceTree = "<group>"; };
+		E04C8E2F1CA07D5C00D51D2C /* Office.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Office.m; sourceTree = "<group>"; };
+		E04C8E311CA07E0600D51D2C /* ClassEmployeeWithEnterpriseAndOffices.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = ClassEmployeeWithEnterpriseAndOffices.json; sourceTree = "<group>"; };
 		E05EC6061C73EE1A0060063B /* ClassicEnterpriseWithOneChief.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = ClassicEnterpriseWithOneChief.json; sourceTree = "<group>"; };
 		E05EC6081C73F0E90060063B /* ClassicEnterpriseWithSeveralChiefs.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = ClassicEnterpriseWithSeveralChiefs.json; sourceTree = "<group>"; };
 		E05EC60A1C73F4600060063B /* ClassicEnterpriseWithNullChiefs.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = ClassicEnterpriseWithNullChiefs.json; sourceTree = "<group>"; };
@@ -310,6 +315,8 @@
 				E0AF00211C617E5200FDB4B9 /* Enterprise.m */,
 				E0AF002F1C61927500FDB4B9 /* Employee.h */,
 				E0AF00301C61927500FDB4B9 /* Employee.m */,
+				E04C8E2E1CA07D5C00D51D2C /* Office.h */,
+				E04C8E2F1CA07D5C00D51D2C /* Office.m */,
 				E06B748C1C73C7A400595AB3 /* ObjectWithCollections.h */,
 				E06B748D1C73C7A400595AB3 /* ObjectWithCollections.m */,
 				E05EC6211C73FA0D0060063B /* EnterpriseCD+CoreDataProperties.h */,
@@ -346,6 +353,7 @@
 				E05EC60C1C73F4820060063B /* ClassicEnterpriseWithNilChiefs.json */,
 				E0EED84F1C7B635800DE9B8A /* ClassicEnterpriseWithOneEmployeeNonNumericalIDS.json */,
 				E0EED84D1C7B62C900DE9B8A /* ClassicEnterpriseWithSeveralEmployeesNonNumericalIDS.json */,
+				E04C8E311CA07E0600D51D2C /* ClassEmployeeWithEnterpriseAndOffices.json */,
 			);
 			name = Fixtures;
 			sourceTree = "<group>";
@@ -538,6 +546,7 @@
 				E0AF002A1C618CA000FDB4B9 /* ClassicEnterpriseWithNoName.json in Resources */,
 				E0AF00281C61899900FDB4B9 /* ClassicEnterpriseWithNullName.json in Resources */,
 				E01EA15B1C73D6FC0081461E /* ClassicEnterpriseWithOrderedEmployees.json in Resources */,
+				E04C8E321CA07E0600D51D2C /* ClassEmployeeWithEnterpriseAndOffices.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -679,6 +688,7 @@
 				E05EC62C1C73FA0D0060063B /* EmployeeCD.m in Sources */,
 				E05EC62B1C73FA0D0060063B /* EmployeeCD+CoreDataProperties.m in Sources */,
 				E05EC6141C73F78E0060063B /* Model.xcdatamodeld in Sources */,
+				E04C8E301CA07D5C00D51D2C /* Office.m in Sources */,
 				E0DAAB501C80BA0100703BB4 /* WANSCodingStoreTests.m in Sources */,
 				E05EC6111C73F69A0060063B /* WAMapperCoreDataStoreTests.m in Sources */,
 				E0EED8551C7B724000DE9B8A /* WAReverseMapperMemoryTests.m in Sources */,

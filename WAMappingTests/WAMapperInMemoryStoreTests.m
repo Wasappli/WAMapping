@@ -15,6 +15,7 @@
 
 #import "Enterprise.h"
 #import "Employee.h"
+#import "Office.h"
 
 SPEC_BEGIN(WAMapperInMemoryStoreTests)
 
@@ -35,10 +36,12 @@ describe(@"WAMapperInMemoryStoreTests", ^{
         beforeAll(^{
             enterpriseMapping = [WAEntityMapping mappingForEntityName:@"Enterprise"];
             employeeMapping = [WAEntityMapping mappingForEntityName:@"Employee"];
-            
+            WAEntityMapping *officeMapping = [WAEntityMapping mappingForEntityName:@"Office"];
+
             enterpriseMapping.identificationAttribute = @"itemID";
             employeeMapping.identificationAttribute = @"itemID";
-            
+            officeMapping.identificationAttribute = @"itemID";
+
             [enterpriseMapping addAttributeMappingsFromDictionary:@{
                                                                     @"id": @"itemID",
                                                                     @"name": @"name",
@@ -59,12 +62,18 @@ describe(@"WAMapperInMemoryStoreTests", ^{
             
             WARelationshipMapping *chiefsRelationship = [WARelationshipMapping relationshipMappingFromSourceIdentificationAttribute:@"chiefs" toDestinationProperty:@"chiefs" withMapping:employeeMapping];
             
+            WARelationshipMapping *officesRelationship = [WARelationshipMapping relationshipMappingFromSourceIdentificationAttribute:@"offices" toDestinationProperty:@"offices" withMapping:officeMapping];
+            
             [enterpriseMapping addRelationshipMapping:employeesRelationship];
             [enterpriseMapping addRelationshipMapping:orderedEmployeesRelationship];
             [enterpriseMapping addRelationshipMapping:chiefsRelationship];
-            
+            [enterpriseMapping addRelationshipMapping:officesRelationship];
+
             WARelationshipMapping *enterpriseRelationship = [WARelationshipMapping relationshipMappingFromSourceProperty:@"enterprise" toDestinationProperty:@"enterprise" withMapping:enterpriseMapping];
             [employeeMapping addRelationshipMapping:enterpriseRelationship];
+            
+            WARelationshipMapping *advisorRelationship = [WARelationshipMapping relationshipMappingFromSourceProperty:@"advisor" toDestinationProperty:@"advisor" withMapping:employeeMapping];
+            [officeMapping addRelationshipMapping:advisorRelationship];
             
             store = [[WAMemoryStore alloc] init];
             mapper = [[WAMapper alloc] initWithStore:store];
@@ -702,6 +711,42 @@ describe(@"WAMapperInMemoryStoreTests", ^{
             
             afterAll(^{
                 enterpriseMapping.identificationAttribute = @"itemID";
+            });
+        });
+        
+        context(@"Employee with it's enterprise and offices", ^{
+            __block Employee *employee = nil;
+            
+            beforeAll(^{
+                NSBundle *bundle = [NSBundle bundleForClass:[self class]];
+                NSString *path = [bundle pathForResource:@"ClassEmployeeWithEnterpriseAndOffices" ofType:@"json"];
+                
+                id json = [NSJSONSerialization JSONObjectWithData:[NSData dataWithContentsOfFile:path]
+                                                          options:NSJSONReadingAllowFragments
+                                                            error:nil];
+                [mapper mapFromRepresentation:json
+                                      mapping:employeeMapping
+                                   completion:^(NSArray *mappedObjects, NSError *error) {
+                                       employee = [mappedObjects firstObject];
+                                   }];
+            });
+            
+            specify(^{
+                [[employee shouldNot] beNil];
+            });
+            
+            specify(^{
+                [[employee.enterprise shouldNot] beNil];
+                [[employee.enterprise should] beKindOfClass:[Enterprise class]];
+            });
+            
+            specify(^{
+                Enterprise *enterprise = employee.enterprise;
+                [[enterprise.name should] equal:@"Wasappli"];
+                [[enterprise.offices should] haveCountOf:2];
+                for (Office *o in enterprise.offices) {
+                    [[o should] beKindOfClass:[Office class]];
+                }
             });
         });
     });

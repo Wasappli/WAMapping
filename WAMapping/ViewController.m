@@ -71,7 +71,6 @@
     
     [mapper mapFromRepresentation:JSON mapping:enterpriseMapping completion:^(NSArray *mappedObjects, NSError *error) {
         NSLog(@"Mapped %@", mappedObjects);
-        NSLog(@"Mapped enterprises %@", [mappedObjects filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"SELF.class == %@", [MyEnterprise class]]]);
     }];
 }
 
