@@ -1,4 +1,4 @@
-target :WAMappingTests, :exclusive => true do
+target :WAMappingTests do
   pod 'Kiwi'
   pod 'MagicalRecord'
   pod 'AutoCoding'

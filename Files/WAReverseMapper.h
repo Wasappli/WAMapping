@@ -11,7 +11,7 @@
 
 @class WAEntityMapping;
 
-typedef BOOL (^WAReverseMapperShouldMapRelationshipBlock)(NSString *sourceRelationShip);
+typedef BOOL (^WAReverseMapperShouldMapRelationshipBlock)(NSString *_Nonnull sourceRelationShip);
 
 /**
  *  This class performs a reverse mapper by turning objects back into dictionaries
@@ -28,7 +28,7 @@ typedef BOOL (^WAReverseMapperShouldMapRelationshipBlock)(NSString *sourceRelati
  *
  *  @return an array of dictionary which are a representation of the objects
  */
-- (NSArray <NSDictionary *>*)reverseMapObjects:(NSArray *)objects fromMapping:(WAEntityMapping *)mapping shouldMapRelationship:(WAReverseMapperShouldMapRelationshipBlock)shouldMapRelationshipBlock error:(NSError **)error;
+- (NSArray <NSDictionary *>*_Nullable)reverseMapObjects:(NSArray *_Nonnull)objects fromMapping:(WAEntityMapping *_Nonnull)mapping shouldMapRelationship:(_Nullable WAReverseMapperShouldMapRelationshipBlock)shouldMapRelationshipBlock error:(NSError *_Nullable*_Nullable)error;
 
 /**
  *  Add a reverse default mapping block for a class. For example, you could have an API returning dates all with the same format. You can register the transformation once here.
@@ -36,8 +36,8 @@ typedef BOOL (^WAReverseMapperShouldMapRelationshipBlock)(NSString *sourceRelati
  *  @param reverseMappingBlock the reverse mapping block called to transform the value
  *  @param destinationClass    the destination class
  */
-- (void)addReverseDefaultMappingBlock:(WAMappingBlock)reverseMappingBlock forDestinationClass:(Class)destinationClass;
+- (void)addReverseDefaultMappingBlock:(_Nonnull WAMappingBlock)reverseMappingBlock forDestinationClass:(_Nonnull Class)destinationClass;
 
-@property (strong, readonly) NSProgress *progress;
+@property (strong, readonly) NSProgress *_Nullable progress;
 
 @end

@@ -10,10 +10,10 @@
 
 @interface WAPropertyTransformation : NSObject
 
-+ (id)propertyValue:(id)initialValue fromPropertyName:(NSString *)propertyName forObject:(id)object;
-+ (NSString *)propertyTypeStringRepresentationFromPropertyName:(NSString *)propertyName forObject:(id)object;
-+ (BOOL)isClassACollection:(Class)class;
-+ (BOOL)isClassAMutableCollection:(Class)class;
-+ (id)convertObject:(id)object toClass:(Class)destinationClass;
++ (id _Nullable)propertyValue:(_Nullable id)initialValue fromPropertyName:(NSString *_Nonnull)propertyName forObject:(_Nonnull id)object;
++ (NSString *_Nullable)propertyTypeStringRepresentationFromPropertyName:(NSString *_Nonnull)propertyName forObject:(_Nonnull id)object;
++ (BOOL)isClassACollection:(_Nonnull Class)class;
++ (BOOL)isClassAMutableCollection:(_Nonnull Class)class;
++ (id _Nullable)convertObject:(_Nonnull id)object toClass:(_Nonnull Class)destinationClass;
 
 @end

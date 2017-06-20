@@ -10,7 +10,7 @@
 
 @protocol WAMergeableCollectionProtocol <NSObject>
 
-- (instancetype)wa_collectionMergedWith:(id <WAMergeableCollectionProtocol>)toMerge;
-- (instancetype)wa_collectionMinus:(id <WAMergeableCollectionProtocol>)toRemove;
+- (instancetype _Nonnull)wa_collectionMergedWith:(_Nonnull id <WAMergeableCollectionProtocol>)toMerge;
+- (instancetype _Nonnull)wa_collectionMinus:(_Nonnull id <WAMergeableCollectionProtocol>)toRemove;
 
 @end

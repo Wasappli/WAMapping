@@ -10,6 +10,6 @@
 
 @interface NSMutableDictionary (WASubDictionary)
 
-- (void)wa_setObject:(id)value byCreatingDictionariesForKeyPath:(NSString *)keyPath;
+- (void)wa_setObject:(_Nonnull id)value byCreatingDictionariesForKeyPath:(NSString *_Nonnull)keyPath;
 
 @end

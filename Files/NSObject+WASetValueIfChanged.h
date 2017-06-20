@@ -10,6 +10,6 @@
 
 @interface NSObject (WASetValueIfChanged)
 
-- (void)wa_setValueIfChanged:(id)value forKey:(NSString *)key;
+- (void)wa_setValueIfChanged:(_Nonnull id)value forKey:(NSString *_Nonnull)key;
 
 @end
