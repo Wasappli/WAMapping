@@ -22,14 +22,14 @@
  *
  *  @return a new object from the store
  */
-- (id)newObjectForMapping:(WAEntityMapping *)mapping;
+- (_Nullable id)newObjectForMapping:(WAEntityMapping *_Nonnull)mapping;
 
 /**
  *  Asks to delete an object from the store
  *
  *  @param object the object to delete
  */
-- (void)deleteObject:(id)object;
+- (void)deleteObject:(_Nonnull id)object;
 
 /**
  *  Asks to fetch existing objects from attributes values (from `destinationSourcePath` on `WAEntityMapping`)
@@ -39,7 +39,7 @@
  *
  *  @return an array of existing objects in the store
  */
-- (NSArray *)objectsWithAttributes:(NSArray *)attributes forMapping:(WAEntityMapping *)mapping;
+- (NSArray *_Nullable)objectsWithAttributes:(NSArray *_Nonnull)attributes forMapping:(WAEntityMapping *_Nonnull)mapping;
 
 /**
  *  Begin a transaction. Usually used to initialize or block a context

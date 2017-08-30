@@ -8,4 +8,4 @@
 
 @import Foundation;
 
-typedef id (^WAMappingBlock)(id value);
+typedef _Nonnull id (^WAMappingBlock)(_Nonnull id value);

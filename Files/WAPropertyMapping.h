@@ -14,8 +14,8 @@
  */
 @interface WAPropertyMapping : NSObject
 
-- (instancetype)init NS_UNAVAILABLE;
-+ (instancetype)new NS_UNAVAILABLE;
+- (instancetype _Nonnull)init NS_UNAVAILABLE;
++ (instancetype _Nonnull)new NS_UNAVAILABLE;
 
 /**
  *  Create a property mapping
@@ -27,16 +27,16 @@
  *
  *  @return return a property mapping instance
  */
-- (instancetype)initWithSourcePropertyName:(NSString *)sourcePropertyName destinationPropertyName:(NSString *)destinationPropertyName mappingBlock:(WAMappingBlock)mappingBlock reverseMappingBlock:(WAMappingBlock)reverseMappingBlock;
+- (instancetype _Nonnull)initWithSourcePropertyName:(NSString *_Nonnull)sourcePropertyName destinationPropertyName:(NSString *_Nonnull)destinationPropertyName mappingBlock:(_Nullable WAMappingBlock)mappingBlock reverseMappingBlock:(_Nullable WAMappingBlock)reverseMappingBlock;
 
 /**
  *  @see `initWithSourcePropertyName: destinationPropertyName: mappingBlock: reverseMappingBlock:`
  */
-+ (instancetype)propertyMappingWithSourcePropertyName:(NSString *)sourcePropertyName destinationPropertyName:(NSString *)destinationPropertyName mappingBlock:(WAMappingBlock)mappingBlock reverseMappingBlock:(WAMappingBlock)reverseMappingBlock;
++ (instancetype _Nonnull)propertyMappingWithSourcePropertyName:(NSString *_Nonnull)sourcePropertyName destinationPropertyName:(NSString *_Nonnull)destinationPropertyName mappingBlock:(_Nullable WAMappingBlock)mappingBlock reverseMappingBlock:(_Nullable WAMappingBlock)reverseMappingBlock;
 
-@property (nonatomic, strong, readonly) NSString       *sourcePropertyName;
-@property (nonatomic, strong, readonly) NSString       *destinationPropertyName;
-@property (nonatomic, copy, readonly  ) WAMappingBlock mappingBlock;
-@property (nonatomic, copy, readonly  ) WAMappingBlock reverseMappingBlock;
+@property (nonatomic, strong, readonly) NSString       *_Nonnull sourcePropertyName;
+@property (nonatomic, strong, readonly) NSString       *_Nonnull destinationPropertyName;
+@property (nonatomic, copy, readonly  ) _Nullable WAMappingBlock mappingBlock;
+@property (nonatomic, copy, readonly  ) _Nullable WAMappingBlock reverseMappingBlock;
 
 @end

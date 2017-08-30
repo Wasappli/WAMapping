@@ -12,8 +12,8 @@
 @class WAEntityMapping;
 @protocol WAStoreProtocol;
 
-typedef void (^WAMapperProgressBlock)(NSProgress *progress);
-typedef void (^WAMapperCompletionBlock)(NSArray *mappedObjects, NSError *error);
+typedef void (^WAMapperProgressBlock)(NSProgress *_Nullable progress);
+typedef void (^WAMapperCompletionBlock)(NSArray *_Nullable mappedObjects, NSError *_Nullable error);
 
 /**
  This class will transform a dictionary representation to an object
@@ -22,8 +22,8 @@ typedef void (^WAMapperCompletionBlock)(NSArray *mappedObjects, NSError *error);
 */
 @interface WAMapper : NSObject
 
-- (instancetype)init NS_UNAVAILABLE;
-+ (instancetype)new NS_UNAVAILABLE;
+- (instancetype _Nonnull)init NS_UNAVAILABLE;
++ (instancetype _Nonnull)new NS_UNAVAILABLE;
 
 /**
  *  Init the mapper with a store
@@ -32,12 +32,12 @@ typedef void (^WAMapperCompletionBlock)(NSArray *mappedObjects, NSError *error);
  *
  *  @return an instance of the mapper
  */
-- (instancetype)initWithStore:(id <WAStoreProtocol>)store NS_DESIGNATED_INITIALIZER;
+- (instancetype _Nonnull)initWithStore:(_Nonnull id <WAStoreProtocol>)store NS_DESIGNATED_INITIALIZER;
 
 /**
  *  @see `initWithStore:`
  */
-+ (instancetype)newMapperWithStore:(id <WAStoreProtocol>)store;
++ (instancetype _Nonnull)newMapperWithStore:(_Nonnull id <WAStoreProtocol>)store;
 
 /**
  *  Map a dictionary representation to the objects
@@ -46,7 +46,7 @@ typedef void (^WAMapperCompletionBlock)(NSArray *mappedObjects, NSError *error);
  *  @param mapping    the mapping used to map the objects
  *  @param completion a completion block called when all objects have been mapped
  */
-- (void)mapFromRepresentation:(id)json mapping:(WAEntityMapping *)mapping completion:(WAMapperCompletionBlock)completion;
+- (void)mapFromRepresentation:(_Nonnull id)json mapping:(WAEntityMapping *_Nonnull)mapping completion:(_Nonnull WAMapperCompletionBlock)completion;
 
 /**
  *  Add a default mapping block for a class. For example, you could have an API returning dates all with the same format. You can register the transformation once here.
@@ -54,10 +54,10 @@ typedef void (^WAMapperCompletionBlock)(NSArray *mappedObjects, NSError *error);
  *  @param mappingBlock     the mapping block called to transform the value
  *  @param destinationClass the destination class
  */
-- (void)addDefaultMappingBlock:(WAMappingBlock)mappingBlock forDestinationClass:(Class)destinationClass;
+- (void)addDefaultMappingBlock:(_Nonnull WAMappingBlock)mappingBlock forDestinationClass:(_Nonnull Class)destinationClass;
 
-@property (nonatomic, strong, readonly) id <WAStoreProtocol> store;
+@property (nonatomic, strong, readonly) _Nonnull id <WAStoreProtocol> store;
 
-@property (strong, readonly) NSProgress *progress;
+@property (strong, readonly) NSProgress *_Nullable progress;
 
 @end

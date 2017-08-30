@@ -14,8 +14,8 @@
  */
 @interface WANSCodingStore : NSObject <WAStoreProtocol>
 
-- (instancetype)init NS_UNAVAILABLE;
-+ (instancetype)new NS_UNAVAILABLE;
+- (instancetype _Nonnull)init NS_UNAVAILABLE;
++ (instancetype _Nonnull)new NS_UNAVAILABLE;
 
 /**
  *  Init the store with an archive path used to store all your objects
@@ -24,6 +24,6 @@
  *
  *  @return an NSCoding store
  */
-- (instancetype)initWithArchivePath:(NSString *)archivePath NS_DESIGNATED_INITIALIZER;
+- (instancetype _Nonnull)initWithArchivePath:(NSString *_Nonnull)archivePath NS_DESIGNATED_INITIALIZER;
 
 @end

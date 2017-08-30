@@ -17,8 +17,8 @@
  */
 @interface WACoreDataStore : NSObject <WAStoreProtocol>
 
-- (instancetype)init NS_UNAVAILABLE;
-+ (instancetype)new NS_UNAVAILABLE;
+- (instancetype _Nonnull)init NS_UNAVAILABLE;
++ (instancetype _Nonnull)new NS_UNAVAILABLE;
 
 /**
  *  Create a new store with a managed object context
@@ -27,8 +27,8 @@
  *
  *  @return an instance of a CoreData store
  */
-- (instancetype)initWithManagedObjectContext:(NSManagedObjectContext *)managedObjectContext NS_DESIGNATED_INITIALIZER;
+- (instancetype _Nonnull)initWithManagedObjectContext:(NSManagedObjectContext *_Nonnull)managedObjectContext NS_DESIGNATED_INITIALIZER;
 
-@property (nonatomic, readonly, strong) NSManagedObjectContext *context;
+@property (nonatomic, readonly, strong) NSManagedObjectContext *_Nonnull context;
 
 @end

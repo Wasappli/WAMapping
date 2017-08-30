@@ -21,8 +21,8 @@ typedef enum : NSUInteger {
 */
 @interface WARelationshipMapping : NSObject
 
-- (instancetype)init NS_UNAVAILABLE;
-+ (instancetype)new NS_UNAVAILABLE;
+- (instancetype _Nonnull)init NS_UNAVAILABLE;
++ (instancetype _Nonnull)new NS_UNAVAILABLE;
 
 /**
  *  This is the classic relation ship. eg: `{employees: [{"name": "first employee"}, {"name": "second employee"}]}`
@@ -33,12 +33,12 @@ typedef enum : NSUInteger {
  *
  *  @return a relationship mapping instance
  */
-- (instancetype)initWithSourceProperty:(NSString *)sourceProperty destinationProperty:(NSString *)destinationProperty mapping:(WAEntityMapping *)mapping;
+- (instancetype _Nonnull)initWithSourceProperty:(NSString *_Nonnull)sourceProperty destinationProperty:(NSString *_Nonnull)destinationProperty mapping:(WAEntityMapping *_Nonnull)mapping;
 
 /**
  *  @see `initWithSourceProperty: destinationProperty: mapping:`
  */
-+ (instancetype)relationshipMappingFromSourceProperty:(NSString *)sourceProperty toDestinationProperty:(NSString *)destinationProperty withMapping:(WAEntityMapping *)mapping;
++ (instancetype _Nonnull)relationshipMappingFromSourceProperty:(NSString *_Nonnull)sourceProperty toDestinationProperty:(NSString *_Nonnull)destinationProperty withMapping:(WAEntityMapping *_Nonnull)mapping;
 
 /**
  *  This is the second behavior offered for a relation ship. eg: `{employees: [1, 2]}` or `{chief: 1}`
@@ -49,12 +49,12 @@ typedef enum : NSUInteger {
  *
  *  @return a relation ship mapping instance
  */
-- (instancetype)initWithSourceIdentificationAttribute:(NSString *)sourceIdentificationAttribute destinationProperty:(NSString *)destinationProperty mapping:(WAEntityMapping *)mapping;
+- (instancetype _Nonnull)initWithSourceIdentificationAttribute:(NSString *_Nonnull)sourceIdentificationAttribute destinationProperty:(NSString *_Nonnull)destinationProperty mapping:(WAEntityMapping *_Nonnull)mapping;
 
 /**
  *  @see `initWithSourceIdentificationAttribute: destinationProperty: mapping:`
  */
-+ (instancetype)relationshipMappingFromSourceIdentificationAttribute:(NSString *)sourceIdentificationAttribute toDestinationProperty:(NSString *)destinationProperty withMapping:(WAEntityMapping *)mapping;
++ (instancetype _Nonnull)relationshipMappingFromSourceIdentificationAttribute:(NSString *_Nonnull)sourceIdentificationAttribute toDestinationProperty:(NSString *_Nonnull)destinationProperty withMapping:(WAEntityMapping *_Nonnull)mapping;
 
 /**
  *  The relation ship policy. Default is `WARelationshipPolicyAssign`
@@ -65,9 +65,9 @@ typedef enum : NSUInteger {
  */
 @property (nonatomic, assign) WARelationshipPolicy relationshipPolicy;
 
-@property (nonatomic, readonly) NSString        *sourceProperty;
-@property (nonatomic, readonly) NSString        *sourceIdentificationAttribute;
-@property (nonatomic, readonly) NSString        *destinationProperty;
-@property (nonatomic, readonly) WAEntityMapping *mapping;
+@property (nonatomic, readonly) NSString        *_Nullable sourceProperty;
+@property (nonatomic, readonly) NSString        *_Nullable sourceIdentificationAttribute;
+@property (nonatomic, readonly) NSString        *_Nonnull destinationProperty;
+@property (nonatomic, readonly) WAEntityMapping *_Nonnull mapping;
 
 @end

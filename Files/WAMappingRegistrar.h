@@ -20,7 +20,7 @@
  *
  *  @param mapping the mapping to register
  */
-- (void)registerMapping:(WAEntityMapping *)mapping;
+- (void)registerMapping:(WAEntityMapping *_Nonnull)mapping;
 
 /**
  *  Retrieve a registered mapping from entity name
@@ -29,6 +29,6 @@
  *
  *  @return an existing entity mapping or nil
  */
-- (WAEntityMapping *)mappingForEntityName:(NSString *)entityName;
+- ( WAEntityMapping *_Nullable )mappingForEntityName:(NSString *_Nonnull)entityName;
 
 @end
