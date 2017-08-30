@@ -22,9 +22,9 @@ typedef BOOL (^WAReverseMapperShouldMapRelationshipBlock)(NSString *_Nonnull sou
 /**
  *  Turns objects into a dictionary
  *
- *  @param objects               the objects you need to turns into dictionary
- *  @param mapping               the mapping used to reverse map the objects
- *  @param shouldMapRelationship a block called if you want to avoid some relationships to be reversed mapped. Map everything by default.
+ *  @param objects                    the objects you need to turns into dictionary
+ *  @param mapping                    the mapping used to reverse map the objects
+ *  @param shouldMapRelationshipBlock a block called if you want to avoid some relationships to be reversed mapped. Map everything by default.
  *
  *  @return an array of dictionary which are a representation of the objects
  */

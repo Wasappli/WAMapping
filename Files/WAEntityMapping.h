@@ -24,7 +24,7 @@
 /**
  *  Retrieve the mapping for an entity name
  *
- *  @param name The name of the entity
+ *  @param entityName The name of the entity
  *
  *  @return the corresponding mapping
  */
